@@ -2,210 +2,221 @@ import React, { useState } from 'react';
 import {
   ArrowRight,
   CheckCircle2,
-  MessageCircle,
   X,
-  ZoomIn,
+  Phone,
+  Mail,
+  MapPin,
 } from 'lucide-react';
 import { AREAS_ATUACAO, PROFILE_INFO } from '../data/siteData';
 
-export default function AreasSection({ onScrollToContact }) {
+export const AreasSection = () => {
   const [selectedArea, setSelectedArea] = useState(null);
-  const [lightboxImage, setLightboxImage] = useState(null);
 
   return (
-    <section
-      id="atuacao"
-      className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
-    >
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
-        <div>
-          <span className="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FBE9EA] text-[#9E1B32] mb-2">
-            Áreas de Atuação
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-stone-900">
-            Assessoria jurídica para{' '}
-            <span className="text-[#9E1B32]">empresas e pessoas físicas</span>
+    <section id="atuacao" className="py-16 md:py-28 bg-[#FAF6F0] border-t border-b border-[#C8A261]/20 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Cabeçalho da Seção com Linha Dourada Decorativa */}
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-14 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#2D0812] text-xs text-[#E8D5B0] font-semibold tracking-wider uppercase shadow-xs">
+            Especialidades Jurídicas
+          </div>
+          <h2 className="font-serif-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-[#210A11] tracking-tight">
+            Áreas de Atuação &amp; Escritório
           </h2>
-          <p className="text-stone-600 text-sm sm:text-base mt-2 max-w-2xl">
-            Atuação consultiva, preventiva e contenciosa no escritório{' '}
-            <strong>FV Advogados Associados</strong>, com soluções claras e personalizadas.
+          {/* Linha decorativa dourada */}
+          <div className="w-16 h-1 bg-[#C8A261] mx-auto rounded-full mt-2 mb-3" />
+          <p className="text-[#523E45] text-sm sm:text-base leading-relaxed">
+            Assessoria jurídica para pessoas físicas e jurídicas pelo tradicional escritório <strong className="text-[#210A11] font-semibold">FV Advogados Associados</strong>, combinando rigor técnico, escuta ativa e firmeza processual.
           </p>
         </div>
-      </div>
 
-      {/* Grade de 6 Áreas de Atuação */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-        {AREAS_ATUACAO.map((area) => {
-          const IconComponent = area.icon;
-          return (
-            <div
-              key={area.id}
-              className="group bg-white rounded-2xl border border-stone-100 shadow-[0_6px_28px_rgb(0,0,0,0.05)] hover:shadow-[0_14px_38px_rgb(158,27,50,0.12)] transition-all duration-300 flex flex-col overflow-hidden"
-            >
-              <div className="h-48 overflow-hidden relative">
+        {/* Banner Institucional do Escritório FV Advogados Associados */}
+        <div className="mb-12 sm:mb-14 rounded-2xl bg-white border border-[#C8A261]/30 shadow-sm hover:shadow-md transition-shadow p-6 sm:p-8 relative overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            {/* Logo do Escritório */}
+            <div className="lg:col-span-3 flex sm:flex-row lg:flex-col items-center gap-4">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-[#C8A261]/40 bg-[#1E050C] flex-shrink-0 shadow-md">
                 <img
-                  src={area.image}
-                  alt={area.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  src="./images/fv-logo.jpg"
+                  alt="FV Advogados Associados"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-                <div className="absolute bottom-3 left-4 w-9 h-9 rounded-xl bg-white/95 text-[#9E1B32] flex items-center justify-center shadow-sm">
-                  <IconComponent className="w-4 h-4" />
-                </div>
+              </div>
+              <div className="lg:text-center">
+                <span className="text-xs text-[#C8A261] font-bold uppercase tracking-wider block">
+                  {PROFILE_INFO.officeSince}
+                </span>
+                <span className="text-[12px] text-[#523E45] block font-medium">
+                  Tradição no Sul da Bahia
+                </span>
+              </div>
+            </div>
+
+            {/* Informações Institucionais */}
+            <div className="lg:col-span-9 space-y-4">
+              <div>
+                <h3 className="text-2xl font-serif-editorial font-bold text-[#210A11]">
+                  {PROFILE_INFO.officeName}
+                </h3>
+                <p className="text-sm sm:text-base text-[#523E45] mt-1 leading-relaxed">
+                  Banca advocatícia de referência em Itabuna e no estado da Bahia há mais de 34 anos. Atuação consolidada no contencioso e consultivo Empresarial, Trabalhista, Cível, Contratual, de Família e Agrário, com estrutura física completa e atendimento online para todo o país.
+                </p>
               </div>
 
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="text-lg font-bold text-stone-900 mb-2.5 group-hover:text-[#9E1B32] transition-colors">
-                    {area.title}
-                  </h3>
-                  <p className="text-sm text-stone-600 leading-relaxed mb-6">
-                    {area.shortDesc}
-                  </p>
+              {/* Contatos Rápidos do Escritório */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs text-[#210A11]">
+                <div className="flex items-center gap-2.5 p-3 rounded-xl bg-[#FAF6F0] border border-[#C8A261]/20">
+                  <MapPin className="w-4 h-4 text-[#C8A261] flex-shrink-0" />
+                  <span className="truncate font-semibold">{PROFILE_INFO.city}</span>
                 </div>
-
-                <div className="flex items-center justify-between pt-2 border-t border-stone-100">
-                  <button
-                    onClick={() => setSelectedArea(area)}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#9E1B32] hover:bg-[#7D1326] text-white text-xs font-semibold transition cursor-pointer"
-                  >
-                    Ver detalhes <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-
-                  <a
-                    href={`https://wa.me/${PROFILE_INFO.whatsappNumber}?text=${encodeURIComponent(
-                      `Olá, Dra. Beatriz! Gostaria de orientação jurídica sobre ${area.title}.`
-                    )}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-xs font-semibold text-stone-500 hover:text-[#9E1B32] inline-flex items-center gap-1 transition"
-                  >
-                    <MessageCircle className="w-3.5 h-3.5" />
-                    Consultar
-                  </a>
+                <div className="flex items-center gap-2.5 p-3 rounded-xl bg-[#FAF6F0] border border-[#C8A261]/20">
+                  <Phone className="w-4 h-4 text-[#C8A261] flex-shrink-0" />
+                  <span className="font-semibold">{PROFILE_INFO.officePhone}</span>
+                </div>
+                <div className="flex items-center gap-2.5 p-3 rounded-xl bg-[#FAF6F0] border border-[#C8A261]/20">
+                  <Mail className="w-4 h-4 text-[#C8A261] flex-shrink-0" />
+                  <span className="truncate font-semibold">{PROFILE_INFO.emailOffice}</span>
                 </div>
               </div>
             </div>
-          );
-        })}
+          </div>
+        </div>
+
+        {/* Grade com os 4 Cards de Especialidade com Números Grandes e Bordas Douradas */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          {AREAS_ATUACAO.map((area, index) => {
+            const Icon = area.icon;
+            const numberLabel = `0${index + 1}`;
+            return (
+              <div
+                key={area.id}
+                className="group rounded-2xl bg-white border border-[#C8A261]/25 hover:border-[#C8A261] p-7 sm:p-8 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-[#C8A261]/10 hover:-translate-y-1 flex flex-col justify-between relative overflow-hidden"
+              >
+                {/* Número Grande no Canto Superior */}
+                <div className="absolute top-6 right-6 font-serif-editorial text-4xl sm:text-5xl font-bold text-[#C8A261]/20 group-hover:text-[#C8A261]/50 transition-colors pointer-events-none select-none">
+                  {numberLabel}
+                </div>
+
+                <div className="space-y-4 sm:space-y-5">
+                  {/* Ícone em Círculo Rubi com Ícone Dourado */}
+                  <div className="w-14 h-14 rounded-2xl bg-[#2D0812] border border-[#C8A261]/40 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+                    <Icon className="w-7 h-7 text-[#E8D5B0]" />
+                  </div>
+
+                  <h3 className="font-serif-editorial text-2xl sm:text-3xl font-bold text-[#210A11] group-hover:text-[#C8A261] transition-colors">
+                    {area.title}
+                  </h3>
+
+                  <p className="text-[14px] sm:text-base text-[#523E45] leading-relaxed font-normal">
+                    {area.shortDesc}
+                  </p>
+
+                  <ul className="space-y-2.5 pt-2">
+                    {area.highlights.slice(0, 3).map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#210A11] font-medium">
+                        <CheckCircle2 className="w-4 h-4 text-[#C8A261] mt-0.5 flex-shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                  <button
+                    onClick={() => setSelectedArea(area)}
+                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#2D0812] hover:text-[#C8A261] transition-colors"
+                  >
+                    <span>Conhecer detalhes da atuação</span>
+                    <ArrowRight className="w-4 h-4 text-[#C8A261] group-hover:translate-x-1 transition-transform" />
+                  </button>
+
+                  <a
+                    href={`https://wa.me/${PROFILE_INFO.whatsappNumber}?text=Ol%C3%A1%2C%20Dra.%20Beatriz!%20Gostaria%20de%20consultoria%20na%20%C3%A1rea%20de%20${encodeURIComponent(
+                      area.title
+                    )}.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-semibold text-[#C8A261] hover:text-[#DFBD7F] uppercase tracking-wider transition-colors"
+                  >
+                    Consultar →
+                  </a>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Modal de Detalhes da Área de Atuação (evita páginas extras desnecessárias) */}
+      {/* Modal Detalhado da Área de Atuação */}
       {selectedArea && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
-            <div className="relative h-60 sm:h-72">
-              <img
-                src={selectedArea.image}
-                alt={selectedArea.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#2D0812]/80 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-white border-2 border-[#C8A261]/40 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative shadow-2xl space-y-6">
+            <button
+              onClick={() => setSelectedArea(null)}
+              className="absolute top-5 right-5 p-2 rounded-lg bg-slate-100 text-slate-500 hover:text-[#2D0812] hover:bg-slate-200 transition-colors"
+              aria-label="Fechar modal"
+            >
+              <X className="w-5 h-5" />
+            </button>
 
-              <button
-                onClick={() => setSelectedArea(null)}
-                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/65 text-white flex items-center justify-center hover:bg-black cursor-pointer"
-                aria-label="Fechar"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              <button
-                onClick={() => setLightboxImage(selectedArea.image)}
-                className="absolute bottom-4 right-4 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-stone-800 shadow-lg flex items-center justify-center transition cursor-pointer"
-                title="Ampliar imagem"
-              >
-                <ZoomIn className="w-4 h-4" />
-              </button>
-
-              <div className="absolute bottom-4 left-6 right-16 text-white">
-                <span className="text-xs font-semibold uppercase tracking-wider text-rose-200 block">
-                  Área de Atuação • FV Advogados Associados
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-[#2D0812] border border-[#C8A261]/40 flex items-center justify-center flex-shrink-0">
+                {React.createElement(selectedArea.icon, {
+                  className: 'w-7 h-7 text-[#E8D5B0]',
+                })}
+              </div>
+              <div>
+                <span className="text-xs uppercase tracking-wider text-[#C8A261] font-bold">
+                  FV Advogados Associados (Desde 1990)
                 </span>
-                <h3 className="text-2xl sm:text-3xl font-bold mt-0.5">
+                <h3 className="text-2xl sm:text-3xl font-serif-editorial font-bold text-[#210A11]">
                   {selectedArea.title}
                 </h3>
               </div>
             </div>
 
-            <div className="p-6 sm:p-8 space-y-5">
-              <div className="space-y-3.5 text-stone-600 leading-relaxed text-sm sm:text-base">
-                {selectedArea.fullContent.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
+            <div className="space-y-4 text-sm sm:text-base text-[#523E45] leading-relaxed">
+              {selectedArea.fullContent.map((paragraph, idx) => (
+                <p key={idx}>{paragraph}</p>
+              ))}
+            </div>
+
+            <div className="space-y-2.5 pt-2">
+              <h4 className="text-xs uppercase tracking-wider text-[#210A11] font-bold">
+                Principais Frentes de Atendimento:
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {selectedArea.highlights.map((h, i) => (
+                  <div key={i} className="flex items-start gap-2.5 p-3 rounded-xl bg-[#FAF6F0] border border-[#C8A261]/20 text-xs sm:text-sm text-[#210A11] font-medium">
+                    <CheckCircle2 className="w-4 h-4 text-[#C8A261] mt-0.5 flex-shrink-0" />
+                    <span>{h}</span>
+                  </div>
                 ))}
               </div>
-
-              <div className="bg-[#FDF6F7] rounded-2xl p-5 sm:p-6 border border-rose-100">
-                <h4 className="text-sm sm:text-base font-bold text-stone-900 mb-3.5">
-                  Principais frentes de atuação em {selectedArea.title}:
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {selectedArea.highlights.map((item, i) => (
-                    <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700">
-                      <CheckCircle2 className="w-4 h-4 text-[#9E1B32] shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-3 flex flex-wrap items-center justify-between gap-4 border-t border-stone-100">
-                <div className="flex flex-wrap gap-3">
-                  <button
-                    onClick={() => {
-                      setSelectedArea(null);
-                      onScrollToContact(selectedArea.title);
-                    }}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#9E1B32] hover:bg-[#7D1326] text-white font-semibold text-xs sm:text-sm shadow-md transition cursor-pointer"
-                  >
-                    Agendar consulta nesta área <ArrowRight className="w-4 h-4" />
-                  </button>
-                  <a
-                    href={`https://wa.me/${PROFILE_INFO.whatsappNumber}?text=${encodeURIComponent(
-                      `Olá, Dra. Beatriz! Preciso de orientação em ${selectedArea.title}.`
-                    )}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-stone-200 hover:border-[#9E1B32] text-stone-700 hover:text-[#9E1B32] font-semibold text-xs sm:text-sm transition"
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    Falar no WhatsApp
-                  </a>
-                </div>
-
-                <button
-                  onClick={() => setSelectedArea(null)}
-                  className="text-xs font-semibold text-stone-500 hover:text-stone-800 cursor-pointer"
-                >
-                  Fechar
-                </button>
-              </div>
             </div>
-          </div>
-        </div>
-      )}
 
-      {/* Lightbox para Zoom */}
-      {lightboxImage && (
-        <div
-          onClick={() => setLightboxImage(null)}
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4"
-        >
-          <div className="relative max-w-4xl w-full">
-            <button
-              onClick={() => setLightboxImage(null)}
-              className="absolute -top-12 right-0 w-9 h-9 rounded-full bg-white text-stone-900 flex items-center justify-center shadow-md cursor-pointer"
-            >
-              <X className="w-5 h-5" />
-            </button>
-            <img
-              src={lightboxImage}
-              alt="Visualização ampliada"
-              className="w-full max-h-[82vh] object-contain rounded-2xl shadow-2xl"
-            />
+            <div className="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-end gap-3">
+              <button
+                onClick={() => setSelectedArea(null)}
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-semibold text-slate-600 hover:text-[#2D0812] bg-slate-100 hover:bg-slate-200 transition-colors"
+              >
+                Voltar
+              </button>
+              <a
+                href={`https://wa.me/${PROFILE_INFO.whatsappNumber}?text=Ol%C3%A1%2C%20Dra.%20Beatriz!%20Gostaria%20de%20atendimento%20em%20${encodeURIComponent(
+                  selectedArea.title
+                )}.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#C8A261] hover:bg-[#DFBD7F] text-[#2D0812] font-bold text-sm shadow-md"
+              >
+                <span>Falar com Dra. Beatriz sobre essa área</span>
+                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+              </a>
+            </div>
           </div>
         </div>
       )}
     </section>
   );
-}
+};

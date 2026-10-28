@@ -1,227 +1,196 @@
 import React from 'react';
-import {
-  Scale,
-  GraduationCap,
-  Building2,
-  Briefcase,
-  Camera,
-  Phone,
-} from 'lucide-react';
-import { InstagramIcon } from './Icons';
+import { ArrowRight, BookOpen, ShieldCheck, Scale, Award, ChevronDown } from 'lucide-react';
 import { PROFILE_INFO } from '../data/siteData';
+import { InstagramIcon, LattesIcon } from './Icons';
 
-export default function HeroSection({ photoUrl, onScrollTo, onOpenPhotoModal }) {
+export const HeroSection = ({ photos }) => {
   return (
     <section
       id="inicio"
-      className="relative overflow-hidden bg-gradient-to-br from-white via-[#FDF6F7] to-[#F9E2E6] pt-8 pb-16 lg:py-20 border-b border-rose-100/80"
+      className="relative min-h-[calc(100vh-1rem)] lg:min-h-screen flex flex-col justify-center pt-24 pb-12 sm:pt-28 sm:pb-16 lg:py-0 overflow-hidden bg-[#2D0812] text-white"
     >
-      {/* Marca d'água deslizante no fundo */}
-      <div className="pointer-events-none select-none absolute inset-x-0 top-1/2 -translate-y-1/2 overflow-hidden opacity-[0.045]">
-        <div className="whitespace-nowrap text-[95px] sm:text-[140px] font-black tracking-tight text-[#9E1B32] animate-marquee">
-          direito • empresas • trabalhadores • justiça • estratégia • ética • direito •
-        </div>
-      </div>
+      {/* Background ambient lighting - Vinho Rubi & Champagne */}
+      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-[#C8A261]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-10 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-rose-950/20 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Matriz de pontinhos decorativos */}
-      <div
-        className="hidden lg:block absolute left-[46%] top-20 w-28 h-28 opacity-25 pointer-events-none"
-        style={{
-          backgroundImage: 'radial-gradient(#9E1B32 1.75px, transparent 1.75px)',
-          backgroundSize: '12px 12px',
-        }}
-      />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Coluna Esquerda: Título, Subtítulo, Botões e Redes */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-rose-200/80 shadow-xs text-xs font-semibold text-[#9E1B32]">
-              <Scale className="w-3.5 h-3.5 shrink-0" />
-              <span>Advogada @fvadvogadosassociados • UESC | Pós-graduanda PUC/RS</span>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* Coluna de Texto */}
+          <div className="lg:col-span-7 space-y-4 sm:space-y-5 lg:space-y-6 text-center lg:text-left order-2 lg:order-1">
+            {/* Tag Institucional Champagne */}
+            <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-[#3D0E1A] border border-[#C8A261]/50 text-[11px] sm:text-xs text-[#E8D5B0] font-semibold tracking-wide shadow-md max-w-full truncate">
+              <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#C8A261] animate-pulse flex-shrink-0" />
+              <span className="truncate">FV Advogados Associados (Desde 1990) • UESC • PUC/RS • FGV</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-[52px] font-bold text-stone-900 tracking-tight leading-[1.12]">
-              Ajudo <span className="text-[#9E1B32]">empresas</span> e{' '}
-              <span className="text-[#9E1B32]">trabalhadores</span> a entenderem seus direitos.
+            {/* Headline Principal - Cormorant Garamond */}
+            <h1 className="font-serif-editorial text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12]">
+              Advocacia estratégica,{' '}
+              <span className="text-[#C8A261] italic font-semibold">
+                segurança jurídica
+              </span>{' '}
+              e clareza de direitos.
             </h1>
 
-            <p className="text-base sm:text-lg text-stone-600 max-w-xl leading-relaxed">
-              Atuação jurídica estratégica e humanizada em <strong>Itabuna e região</strong>,
-              integrando a tradição do escritório{' '}
-              <strong>FV Advogados Associados (desde 1990)</strong> à atualização acadêmica
-              contínua pela <strong>UESC</strong> e <strong>PUC/RS</strong>.
+            {/* Subtítulo com excelente contraste */}
+            <p className="text-xs sm:text-base text-rose-100/90 max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+              Atuação dedicada a ajudar empresas e trabalhadores a entenderem e protegerem seus direitos, unindo a tradição de mais de 34 anos da banca <strong className="text-white font-semibold">FV Advogados Associados</strong> à formação contínua pela <strong className="text-white font-semibold">PUC/RS</strong>, <strong className="text-white font-semibold">FGV</strong> e <strong className="text-white font-semibold">UESC</strong>.
             </p>
 
-            {/* Dupla de botões */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <button
-                onClick={() => onScrollTo('contato')}
-                className="px-7 py-3.5 rounded-full bg-[#9E1B32] hover:bg-[#821428] text-white font-semibold text-sm shadow-lg shadow-[#9E1B32]/25 hover:shadow-xl hover:shadow-[#9E1B32]/30 transition-all cursor-pointer"
+            {/* Botões de Ação */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-1">
+              <a
+                href={PROFILE_INFO.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-[#C8A261] hover:bg-[#DFBD7F] text-[#2D0812] font-bold text-xs sm:text-sm shadow-lg shadow-[#C8A261]/25 hover:shadow-[#C8A261]/40 transition-all transform hover:-translate-y-0.5"
               >
-                Agendar consulta
-              </button>
-              <button
-                onClick={() => onScrollTo('atuacao')}
-                className="px-7 py-3.5 rounded-full bg-white hover:bg-[#9E1B32] text-stone-800 hover:text-white font-semibold text-sm border border-stone-200 hover:border-[#9E1B32] shadow-xs transition-all cursor-pointer"
+                <span>Agendar Consulta Jurídica</span>
+                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+              </a>
+
+              <a
+                href="#artigos"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl bg-[#1E050C] hover:bg-[#3D0E1A] text-rose-100 hover:text-white border border-[#C8A261]/40 hover:border-[#C8A261] font-medium text-xs sm:text-sm shadow-sm transition-all"
               >
-                Áreas de atuação
-              </button>
+                <BookOpen className="w-4 h-4 text-[#C8A261]" />
+                <span>Ver Pesquisas &amp; Publicações</span>
+              </a>
             </div>
 
-            {/* Links de Redes Sociais, Escritório e Lattes */}
-            <div className="flex flex-wrap items-center gap-3 pt-4">
+            {/* 3 Métricas em Destaque extraídas do Lattes Oficial */}
+            <div className="pt-3 sm:pt-4 grid grid-cols-3 gap-2 max-w-lg mx-auto lg:mx-0 border-t border-rose-900/40">
+              <div className="text-center lg:text-left">
+                <span className="font-serif-editorial text-xl sm:text-2xl lg:text-3xl font-bold text-[#E8D5B0] block leading-none">
+                  1º Lugar
+                </span>
+                <span className="text-[10px] sm:text-xs text-rose-200/80 font-medium tracking-wide mt-1 block">
+                  Pesquisa UESC
+                </span>
+              </div>
+              <div className="text-center lg:text-left border-x border-rose-900/40 px-1 sm:px-3">
+                <span className="font-serif-editorial text-xl sm:text-2xl lg:text-3xl font-bold text-[#E8D5B0] block leading-none">
+                  PUC &amp; FGV
+                </span>
+                <span className="text-[10px] sm:text-xs text-rose-200/80 font-medium tracking-wide mt-1 block truncate">
+                  Pós-Graduação
+                </span>
+              </div>
+              <div className="text-center lg:text-left">
+                <span className="font-serif-editorial text-xl sm:text-2xl lg:text-3xl font-bold text-[#E8D5B0] block leading-none">
+                  Desde 1990
+                </span>
+                <span className="text-[10px] sm:text-xs text-rose-200/80 font-medium tracking-wide mt-1 block">
+                  Banca FV Advogados
+                </span>
+              </div>
+            </div>
+
+            {/* Links Sociais e Acadêmicos Oficiais */}
+            <div className="pt-1 flex flex-wrap items-center justify-center lg:justify-start gap-2 text-[11px] sm:text-xs text-rose-200/70">
+              <span className="font-medium text-rose-200/80">Canais:</span>
               <a
                 href={PROFILE_INFO.instagramUrl}
                 target="_blank"
-                rel="noreferrer"
-                title="Instagram Profissional @beatrizfigueiredoadv"
-                className="px-3.5 h-10 rounded-full border border-stone-300/80 bg-white/90 hover:bg-[#9E1B32] hover:border-[#9E1B32] text-stone-700 hover:text-white inline-flex items-center gap-2 text-xs font-semibold transition-colors shadow-xs"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#3D0E1A] border border-rose-900/50 text-rose-100 hover:border-[#C8A261] hover:text-[#E8D5B0] transition-colors"
               >
-                <InstagramIcon className="w-4 h-4 text-[#9E1B32] group-hover:text-white" />
-                {PROFILE_INFO.instagramHandle}
+                <InstagramIcon className="w-3.5 h-3.5 text-[#C8A261]" />
+                <span className="font-medium">{PROFILE_INFO.instagramHandle}</span>
               </a>
 
               <a
                 href={PROFILE_INFO.officeInstagramUrl}
                 target="_blank"
-                rel="noreferrer"
-                title="FV Advogados Associados (@fvadvogadosassociados)"
-                className="px-3.5 h-10 rounded-full border border-stone-300/80 bg-white/90 hover:bg-[#9E1B32] hover:border-[#9E1B32] text-stone-700 hover:text-white inline-flex items-center gap-2 text-xs font-semibold transition-colors shadow-xs"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#3D0E1A] border border-rose-900/50 text-rose-100 hover:border-[#C8A261] hover:text-[#E8D5B0] transition-colors"
               >
-                <Building2 className="w-4 h-4 text-[#9E1B32]" />
-                FV Advogados
+                <ShieldCheck className="w-3.5 h-3.5 text-[#C8A261]" />
+                <span className="font-medium">{PROFILE_INFO.officeInstagramHandle}</span>
               </a>
 
               <a
                 href={PROFILE_INFO.lattesUrl}
                 target="_blank"
-                rel="noreferrer"
-                title="Currículo Lattes CNPq Oficial"
-                className="px-3.5 h-10 rounded-full border border-stone-300/80 bg-white/90 hover:bg-[#9E1B32] hover:border-[#9E1B32] text-stone-700 hover:text-white inline-flex items-center gap-1.5 text-xs font-semibold transition-colors shadow-xs"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#3D0E1A] border border-rose-900/50 text-rose-100 hover:border-[#C8A261] hover:text-[#E8D5B0] transition-colors"
               >
-                <GraduationCap className="w-4 h-4 text-[#9E1B32]" />
-                Lattes CNPq
-              </a>
-
-              <a
-                href={`tel:${PROFILE_INFO.officePhone.replace(/\D/g, '')}`}
-                title="Telefone FV Advogados Associados"
-                className="px-3.5 h-10 rounded-full border border-stone-300/80 bg-white/90 hover:bg-[#9E1B32] hover:border-[#9E1B32] text-stone-700 hover:text-white inline-flex items-center gap-1.5 text-xs font-semibold transition-colors shadow-xs"
-              >
-                <Phone className="w-3.5 h-3.5 text-[#9E1B32]" />
-                {PROFILE_INFO.officePhone}
+                <LattesIcon className="w-3.5 h-3.5 text-[#C8A261]" />
+                <span className="font-medium">Lattes CNPq</span>
               </a>
             </div>
           </div>
 
-          {/* Coluna Direita: Círculo Vermelho Rubi + Foto Real do Instagram + Selo Giratório + 3 Pílulas */}
-          <div className="lg:col-span-6 relative flex items-center justify-center min-h-[430px] sm:min-h-[500px]">
-            {/* Linhas curvas tracejadas sutis ao redor */}
-            <svg
-              className="absolute w-[108%] h-[108%] text-[#9E1B32]/20 pointer-events-none"
-              viewBox="0 0 500 500"
-              fill="none"
-            >
-              <circle
-                cx="250"
-                cy="265"
-                r="205"
-                stroke="currentColor"
-                strokeWidth="1.2"
-                strokeDasharray="5 5"
-              />
-              <path
-                d="M 410 350 Q 450 320 480 355"
-                stroke="#9E1B32"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
+          {/* Coluna Direita: Retrato em Destaque Calibrado para Mobile */}
+          <div className="lg:col-span-5 flex justify-center relative order-1 lg:order-2">
+            <div className="relative w-full max-w-[260px] sm:max-w-[340px] lg:max-w-[420px] aspect-[4/5] flex items-center justify-center">
+              {/* Moldura deslocada dourada fina */}
+              <div className="absolute inset-1.5 sm:inset-2 -right-1.5 -bottom-1.5 sm:-right-2 sm:-bottom-2 rounded-2xl border-2 border-[#C8A261]/40 pointer-events-none" />
+              
+              {/* Moldura de fundo sólida em Vinho Rubi */}
+              <div className="absolute inset-1.5 sm:inset-2 rounded-2xl bg-gradient-to-b from-[#3D0E1A] to-[#2D0812] border border-rose-900/50 shadow-2xl overflow-hidden" />
 
-            {/* Selo Redondo Giratório no Canto Superior Direito */}
-            <div className="absolute top-2 right-2 sm:right-6 z-20 w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-[#3A0812] text-white shadow-xl flex items-center justify-center p-2">
-              <svg viewBox="0 0 100 100" className="w-full h-full animate-spin-slow">
-                <defs>
-                  <path
-                    id="circlePath"
-                    d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-                  />
-                </defs>
-                <text className="text-[9.3px] uppercase font-bold tracking-[2.4px] fill-rose-100">
-                  <textPath href="#circlePath">
-                    • ADVOCACIA • ÉTICA E COMPROMISSO
-                  </textPath>
-                </text>
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Scale className="w-6 h-6 text-rose-200" />
+              {/* Foto Principal Nítida */}
+              <div className="relative z-10 w-full h-full flex items-end justify-center overflow-hidden rounded-2xl pt-3 sm:pt-4">
+                <img
+                  src={photos?.hero || './images/beatriz-figueiredo.jpg'}
+                  alt="Dra. Beatriz Teixeira Figueiredo"
+                  className="w-full h-full object-contain object-bottom drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)] transition-all duration-500 filter contrast-105"
+                  onError={(e) => {
+                    e.target.src = './images/beatriz-figueiredo.jpg';
+                  }}
+                />
               </div>
-            </div>
 
-            {/* Grande Círculo Sólido Vermelho Rubi com a Foto Profissional Real */}
-            <div className="relative w-[300px] h-[300px] sm:w-[390px] sm:h-[390px] rounded-full bg-gradient-to-b from-[#B31E38] to-[#4A0813] shadow-2xl flex items-end justify-center overflow-hidden border-4 border-white/70">
-              <img
-                src={photoUrl}
-                alt={PROFILE_INFO.name}
-                className="w-full h-full object-cover object-center transform hover:scale-103 transition-transform duration-500"
-              />
-
-              {/* Botão discreto caso queira testar outra foto */}
-              <button
-                onClick={onOpenPhotoModal}
-                title="Clique para testar outra foto"
-                className="absolute bottom-3 z-30 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/65 hover:bg-black/85 text-white text-[11px] font-medium backdrop-blur-md transition cursor-pointer"
-              >
-                <Camera className="w-3.5 h-3.5 text-rose-300" />
-                Trocar foto
-              </button>
-            </div>
-
-            {/* Pílula Flutuante 1 — Superior Esquerda: FV Advogados Associados */}
-            <div className="absolute top-10 sm:top-14 left-0 sm:left-2 z-20 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-full shadow-lg border border-rose-100 flex items-center gap-2.5 animate-float-slow">
-              <img
-                src="/images/fv-logo.jpg"
-                alt="FV Advogados Associados"
-                className="w-7 h-7 rounded-full object-cover border border-[#9E1B32]/30"
-              />
-              <div className="text-left">
-                <span className="block text-xs font-bold text-stone-900 leading-none">
-                  FV Advogados
-                </span>
-                <span className="block text-[10px] text-stone-500 mt-0.5">
-                  Desde 1990 • Itabuna
-                </span>
+              {/* Selo Circular Giratório Champagne */}
+              <div className="absolute -top-2.5 -right-2.5 sm:-top-3 sm:-right-3 z-20 w-16 h-16 sm:w-22 sm:h-22 flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full bg-[#2D0812] border-2 border-[#C8A261] shadow-xl flex items-center justify-center">
+                  <div className="w-full h-full animate-spin-slow">
+                    <svg viewBox="0 0 100 100" className="w-full h-full">
+                      <path
+                        id="circlePathHeroBia"
+                        d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
+                        fill="none"
+                      />
+                      <text className="text-[7.5px] uppercase tracking-[0.24em] fill-[#E8D5B0] font-bold">
+                        <textPath xlinkHref="#circlePathHeroBia">
+                          • ADVOCACIA • ÉTICA • DIREITOS •
+                        </textPath>
+                      </text>
+                    </svg>
+                  </div>
+                  <Scale className="w-4 h-4 sm:w-5 sm:h-5 text-[#C8A261] absolute" />
+                </div>
               </div>
-            </div>
 
-            {/* Pílula Flutuante 2 — Inferior Esquerda: Pós-graduanda PUC/RS */}
-            <div className="absolute bottom-10 sm:bottom-14 left-2 sm:left-4 z-20 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-full shadow-lg border border-rose-100 flex items-center gap-2.5 animate-float-delayed">
-              <span className="w-7 h-7 rounded-full bg-[#9E1B32] text-white flex items-center justify-center">
-                <GraduationCap className="w-3.5 h-3.5" />
-              </span>
-              <div className="text-left">
-                <span className="block text-xs font-bold text-stone-900 leading-none">
-                  Pós-graduanda PUC/RS
-                </span>
-                <span className="block text-[10px] text-stone-500 mt-0.5">
-                  Graduada pela UESC
-                </span>
+              {/* Floating Badge - Escritório */}
+              <div className="absolute -bottom-2 left-2 sm:left-4 z-20 bg-[#2D0812]/95 border border-[#C8A261]/40 backdrop-blur-md px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl shadow-xl flex items-center gap-1.5 sm:gap-2">
+                <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-lg bg-[#C8A261]/20 flex items-center justify-center flex-shrink-0">
+                  <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#E8D5B0]" />
+                </div>
+                <div>
+                  <p className="text-[8px] sm:text-[9px] text-[#C8A261] font-semibold uppercase tracking-wider">Banca Jurídica</p>
+                  <p className="text-[10px] sm:text-xs font-bold text-white">FV Advogados</p>
+                </div>
               </div>
-            </div>
-
-            {/* Pílula Flutuante 3 — Direita: Empresas & Trabalhadores */}
-            <div className="absolute bottom-24 sm:bottom-28 right-0 sm:right-1 z-20 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-full shadow-lg border border-rose-100 flex items-center gap-2.5 animate-float-slow">
-              <span className="w-7 h-7 rounded-full bg-[#9E1B32] text-white flex items-center justify-center">
-                <Briefcase className="w-3.5 h-3.5" />
-              </span>
-              <span className="text-xs sm:text-sm font-semibold text-stone-800">
-                Empresas & Trabalhadores
-              </span>
             </div>
           </div>
+
         </div>
+      </div>
+
+      {/* Indicador Suave de Rolagem Centralizado */}
+      <div className="relative z-10 hidden lg:flex justify-center pt-2">
+        <a
+          href="#atuacao"
+          className="inline-flex flex-col items-center text-[10px] text-rose-200/60 hover:text-[#E8D5B0] transition-colors"
+          title="Rolar para Especialidades"
+        >
+          <span className="tracking-widest uppercase mb-1">Explorar</span>
+          <ChevronDown className="w-4 h-4 animate-bounce text-[#C8A261]" />
+        </a>
       </div>
     </section>
   );
-}
+};

@@ -8,12 +8,14 @@ import {
   Scale,
   ShieldCheck,
   Users,
+  GraduationCap,
+  Award,
 } from 'lucide-react';
 
 // ============================================================================
 // DADOS REAIS — DRA. BEATRIZ TEIXEIRA FIGUEIREDO
 // Instagram: @beatrizfigueiredoadv | Escritório: @fvadvogadosassociados (Desde 1990)
-// UESC | Pós-graduanda PUC/RS | Currículo Lattes CNPq ID: 1920374097568395
+// UESC | Pós-graduanda PUC/RS | FGV | Lattes CNPq ID: 1920374097568395
 // ============================================================================
 
 export const PROFILE_INFO = {
@@ -21,26 +23,37 @@ export const PROFILE_INFO = {
   shortName: 'Dra. Beatriz Figueiredo',
   role: 'Advogada • FV Advogados Associados',
   tagline: 'Ajudo empresas e trabalhadores a entenderem e protegerem seus direitos.',
-  education: 'UESC | Pós-graduanda PUC/RS',
+  education: 'UESC | Pós-graduanda PUC/RS | FGV',
   instagramUrl: 'https://www.instagram.com/beatrizfigueiredoadv/',
   instagramHandle: '@beatrizfigueiredoadv',
   officeName: 'FV Advogados Associados',
+  officeShort: 'FV Advogados',
   officeInstagramUrl: 'https://www.instagram.com/fvadvogadosassociados/',
   officeInstagramHandle: '@fvadvogadosassociados',
   officeSince: 'Desde 1990',
   officePhone: '(73) 3211-3550',
   whatsappNumber: '557332113550',
+  whatsappUrl: 'https://wa.me/557332113550?text=Ol%C3%A1%2C%20Dra.%20Beatriz%20Figueiredo!%20Gostaria%20de%20agendar%20um%20atendimento.',
+  emailOffice: 'contato@fvadvogados.com.br',
   city: 'Itabuna & Ilhéus — Bahia',
   lattesUrl: 'http://lattes.cnpq.br/1920374097568395',
   lattesId: '1920374097568395',
 };
 
 export const DEFAULT_LAWYER_PHOTOS = {
-  hero: '/images/beatriz-figueiredo.jpg',
-  about: '/images/beatriz-figueiredo.jpg',
-  contact: '/images/beatriz-figueiredo.jpg',
-  fvLogo: '/images/fv-logo.jpg',
+  hero: `${import.meta.env.BASE_URL}images/beatriz-figueiredo.jpg`,
+  about: `${import.meta.env.BASE_URL}images/beatriz-figueiredo.jpg`,
+  contact: `${import.meta.env.BASE_URL}images/beatriz-figueiredo.jpg`,
+  fvLogo: `${import.meta.env.BASE_URL}images/fv-logo.jpg`,
 };
+
+export const PHOTO_PRESETS = [
+  {
+    id: 'principal',
+    label: 'Retrato Executivo Oficial',
+    url: `${import.meta.env.BASE_URL}images/beatriz-figueiredo.jpg`,
+  },
+];
 
 export const AREAS_ATUACAO = [
   {
@@ -122,48 +135,92 @@ export const AREAS_ATUACAO = [
       'Orientação sobre o Programa de Recuperação da Lavoura Cacaueira',
       'Direito Ambiental aplicado ao campo e sustentabilidade produtiva'
     ]
-  },
-  {
-    id: 'direito-publico-e-fazenda',
-    title: 'Direito Público & Fazenda Pública',
-    shortDesc:
-      'Atuação estratégica perante o Poder Público, defesa de servidores e empresas, licitações, saúde pública e processos administrativos e judiciais.',
-    image:
-      'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=900&q=80',
-    icon: Landmark,
-    fullContent: [
-      'A relação entre cidadãos, empresas, servidores e a Administração Pública frequentemente requer intervenção jurídica qualificada para assegurar o cumprimento da Constituição e das leis.',
-      'A experiência prática adquirida no Gabinete da 1ª Vara da Fazenda Pública da Comarca de Itabuna (TJ/BA) e na 7ª Promotoria de Justiça de Ilhéus (MP/BA) proporciona visão detalhada do funcionamento do Judiciário e do Ministério Público.',
-      'Atuamos em mandados de segurança, processos administrativos, demandas contra a Fazenda Pública e garantia do direito à saúde.'
-    ],
-    highlights: [
-      'Demandas administrativas e judiciais perante a Fazenda Pública',
-      'Direitos de servidores públicos e defesas administrativas',
-      'Garantia do direito à saúde, medicamentos e tratamentos via judicial',
-      'Mandados de segurança e tutela de garantias constitucionais'
-    ]
-  },
-  {
-    id: 'cidadania-e-direito-digital',
-    title: 'Direito Digital & Proteção Online',
-    shortDesc:
-      'Proteção jurídica para pessoas e empresas no ambiente digital, remoção de conteúdo ilícito, combate a fraudes, exposição indevida e responsabilidade civil.',
-    image:
-      'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=900&q=80',
-    icon: Laptop,
-    fullContent: [
-      'Fraudes eletrônicas, ataques à reputação de empresas e profissionais, vazamento de dados, perfis falsos e violência online exigem resposta jurídica imediata.',
-      'Com projetos premiados em 1º lugar na UESC sobre o enfrentamento à violência online e cursos ministrados sobre Cidadania Digital ("É Digital, mas é Legal?"), oferecemos suporte técnico para preservação de provas digitais e responsabilização.',
-      'Auxiliamos na elaboração de notificações extrajudiciais, atas notariais, remoção de conteúdos ofensivos e ações indenizatórias.'
-    ],
-    highlights: [
-      'Proteção da reputação digital de empresas e profissionais',
-      'Remoção de conteúdos ofensivos, perfis falsos e exposição indevida',
-      'Orientação técnica para preservação de provas digitais (atas notariais e URLs)',
-      'Ações indenizatórias por fraudes digitais, golpes e violação de imagem'
-    ]
   }
 ];
+
+export const CREDENCIAIS_TABS = {
+  formacao: {
+    label: 'Formação & Pós-Graduação',
+    icon: GraduationCap,
+    items: [
+      {
+        period: 'Em Andamento',
+        title: 'Pós-Graduação Lato Sensu',
+        institution: 'Pontifícia Universidade Católica do Rio Grande do Sul (PUC/RS)',
+        description:
+          'Especialização focada no aprofundamento das transformações jurídicas contemporâneas, governança corporativa e prática advocatícia estratégica.'
+      },
+      {
+        period: 'Formação Complementar',
+        title: 'Extensão & Capacitação Executiva',
+        institution: 'Fundação Getulio Vargas (FGV)',
+        description:
+          'Cursos executivos e aperfeiçoamento contínuo voltados à gestão jurídica, resolução estratégica de disputas e compliance.'
+      },
+      {
+        period: 'Graduação',
+        title: 'Bacharel em Direito',
+        institution: 'Universidade Estadual de Santa Cruz (UESC)',
+        description:
+          'Formação jurídica sólida com histórico de liderança acadêmica, premiações de pesquisa e projetos de extensão comunitária de alto impacto regional.'
+      }
+    ]
+  },
+  escritorio: {
+    label: 'FV Advogados & Prática',
+    icon: Building2,
+    items: [
+      {
+        period: 'Desde 1990',
+        title: 'Advogada Integrante — FV Advogados Associados',
+        institution: 'Itabuna - Bahia • Atendimento Nacional',
+        description:
+          'Atuação em banca tradicional e consolidada no sul da Bahia há mais de 34 anos, prestando consultoria e contencioso cível, empresarial e trabalhista de excelência.'
+      },
+      {
+        period: 'Prática Jurídica',
+        title: 'Experiência em Gabinete e Fazenda Pública',
+        institution: '1ª Vara da Fazenda Pública de Itabuna (TJ/BA)',
+        description:
+          'Atuação prática no acompanhamento e instrução de processos administrativos e judiciais de alta complexidade envolvendo o Poder Público.'
+      },
+      {
+        period: 'Vara de Família & MP/BA',
+        title: 'Atuação Institucional em Família e Promotoria',
+        institution: '1ª Vara da Família (TJ/BA) e 7ª Promotoria de Justiça de Ilhéus (MP/BA)',
+        description:
+          'Vivência fundamental na condução de processos sensíveis de família, mediação de conflitos e fiscalização da ordem jurídica.'
+      }
+    ]
+  },
+  pesquisa: {
+    label: 'Pesquisa & Premiações',
+    icon: Award,
+    items: [
+      {
+        period: '1º Lugar UESC',
+        title: 'Prêmio de Melhor Trabalho de Extensão',
+        institution: '10º Simpósio de Ensino, Extensão e Pesquisa da UESC',
+        description:
+          'Projeto premiado em primeiro lugar sobre o combate ao cyberbullying, enfrentamento à violência virtual e letramento em cidadania digital.'
+      },
+      {
+        period: 'Atuação Social',
+        title: 'Projeto SERMÃE e SERMULHER',
+        institution: 'Serviço de Referência dos Direitos da Mulher (DCJUR/UESC)',
+        description:
+          'Coordenação e oficinas sobre proteção da maternidade no trabalho, estabilidade gestacional e enfrentamento à violência de gênero.'
+      },
+      {
+        period: 'CNPq',
+        title: 'Pesquisadora do Grupo CINESTESIA',
+        institution: 'Universidade Estadual de Santa Cruz (UESC)',
+        description:
+          'Pesquisas sobre direitos fundamentais, condições de trabalho na área da saúde e diálogos interdisciplinares do Direito.'
+      }
+    ]
+  }
+};
 
 export const ARTIGOS_LATTES = [
   {
@@ -237,51 +294,5 @@ export const ARTIGOS_LATTES = [
       'Premiado em 1º lugar entre os trabalhos de extensão da UESC e apresentado no XIII EPED, o projeto demonstra a importância de aproximar o Direito da educação digital e da prevenção jurídica.',
       'Diante de uma violação online, preservar imediatamente as evidências com URLs, datas, capturas íntegras e ata notarial permite acionar medidas judiciais rápidas de remoção de conteúdo e reparação de danos.'
     ]
-  }
-];
-
-export const DIFERENCIAIS = [
-  {
-    title: 'Tradição & Atualização',
-    desc: 'Atuação integrada ao escritório FV Advogados Associados (desde 1990 em Itabuna) aliada à pós-graduação na PUC/RS e pesquisa na UESC.',
-    icon: Scale
-  },
-  {
-    title: 'Para Empresas e Trabalhadores',
-    desc: 'Visão completa das relações jurídicas, auxiliando empregadores na prevenção de passivos e trabalhadores na defesa de seus direitos.',
-    icon: Users
-  },
-  {
-    title: 'Comunicação Clara e Direta',
-    desc: 'Orientação jurídica sem juridiquês excessivo, para que você compreenda cada risco, direito, prazo e estratégia com total transparência.',
-    icon: ShieldCheck
-  },
-  {
-    title: 'Atendimento Presencial e Online',
-    desc: 'Estrutura física em Itabuna - BA pelo escritório FV Advogados Associados e consultas digitais por videoconferência para todo o Brasil.',
-    icon: Laptop
-  }
-];
-
-export const FAQ_ITEMS = [
-  {
-    q: 'Como funciona a consulta jurídica para empresas ou pessoas físicas?',
-    a: 'Na consulta (presencial em Itabuna no escritório FV Advogados Associados ou online por videoconferência), ouvimos atentamente a demanda, analisamos os documentos e apresentamos um diagnóstico claro sobre seus direitos, riscos e a melhor estratégia preventiva, extrajudicial ou judicial.'
-  },
-  {
-    q: 'O atendimento é voltado tanto para empresas quanto para trabalhadores?',
-    a: 'Sim! Nossa missão é ajudar empresas e trabalhadores a entenderem seus direitos. Atuamos tanto na consultoria preventiva e defesa empresarial (redução de riscos e adequação legal) quanto na defesa de trabalhadores que tiveram seus direitos desrespeitados.'
-  },
-  {
-    q: 'Onde fica localizado o escritório em Itabuna?',
-    a: 'Atuamos no escritório FV Advogados Associados (@fvadvogadosassociados), referência em Itabuna - Bahia desde 1990. Você pode agendar atendimento presencial ou entrar em contato pelo telefone (73) 3211-3550 e WhatsApp.'
-  },
-  {
-    q: 'Como funciona o atendimento online? Tem a mesma validade?',
-    a: 'Sim! Como os processos judiciais hoje são 100% eletrônicos, realizamos consultas por chamada de vídeo ou WhatsApp, recebemos documentos digitalizados com total sigilo e colhemos assinaturas digitais com validade jurídica em todo o Brasil.'
-  },
-  {
-    q: 'Produtores rurais podem revisar contratos de crédito rural?',
-    a: 'Sim. A legislação do crédito rural prevê direitos importantes ao produtor, incluindo possibilidades de prorrogação e renegociação de dívidas em casos de frustração de safra, dificuldades de comercialização ou programas específicos da lavoura cacaueira.'
   }
 ];

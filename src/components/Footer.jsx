@@ -1,245 +1,154 @@
-import React, { useState } from 'react';
-import {
-  ArrowUpRight,
-  Building2,
-  GraduationCap,
-  MapPin,
-  Phone,
-} from 'lucide-react';
-import { InstagramIcon } from './Icons';
-import { AREAS_ATUACAO, PROFILE_INFO } from '../data/siteData';
+import React from 'react';
+import { ArrowUp } from 'lucide-react';
+import { PROFILE_INFO } from '../data/siteData';
+import { InstagramIcon, LattesIcon } from './Icons';
 
-export default function Footer({ onScrollTo, onOpenPhotoModal }) {
-  const [newsletter, setNewsletter] = useState({ nome: '', email: '', telefone: '' });
-  const [newsletterSuccess, setNewsletterSuccess] = useState(false);
-
-  const handleNewsletterSubmit = (e) => {
-    e.preventDefault();
-    if (!newsletter.email) return;
-    setNewsletterSuccess(true);
-    setNewsletter({ nome: '', email: '', telefone: '' });
+export const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="bg-[#380811] text-rose-100/90 pt-16 pb-12 relative overflow-hidden">
-      {/* Linha artística decorativa no canto inferior direito */}
-      <svg
-        className="absolute right-0 bottom-0 w-96 h-96 text-white/5 pointer-events-none"
-        viewBox="0 0 400 400"
-        fill="none"
-      >
-        <path
-          d="M 50 380 C 120 260, 240 280, 310 150 C 350 70, 390 120, 380 390"
-          stroke="currentColor"
-          strokeWidth="8"
-          strokeLinecap="round"
-        />
-        <circle cx="280" cy="240" r="95" stroke="currentColor" strokeWidth="4" />
-      </svg>
+    <footer className="bg-[#1E040B] border-t-2 border-[#C8A261]/40 pt-16 pb-12 text-rose-200/70 text-xs">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-rose-900/40">
+          {/* Identidade */}
+          <div className="md:col-span-5 space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-11 h-11 rounded-lg overflow-hidden border border-[#C8A261]/40 bg-[#2D0812] flex-shrink-0 shadow-md">
+                <img
+                  src="./images/fv-logo.jpg"
+                  alt="FV Advogados"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h4 className="font-serif-editorial text-xl font-bold text-white">
+                  Dra. Beatriz Teixeira Figueiredo
+                </h4>
+                <p className="text-[11px] text-[#C8A261] font-semibold">
+                  {PROFILE_INFO.officeName} ({PROFILE_INFO.officeSince})
+                </p>
+              </div>
+            </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Logo no topo do Footer */}
-        <div className="mb-12 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <span className="block text-xl font-bold text-white">
-              {PROFILE_INFO.name}
-            </span>
-            <span className="block text-[11px] font-semibold tracking-[0.18em] uppercase text-rose-200/75 mt-0.5">
-              Advogada • {PROFILE_INFO.officeName} ({PROFILE_INFO.officeSince})
-            </span>
+            <p className="text-rose-200/80 text-xs leading-relaxed max-w-sm">
+              Graduada pela UESC, Pós-graduanda pela PUC/RS e com capacitações executivas pela FGV. Atuação dedicada à defesa estratégica e assessoria jurídica para empresas e trabalhadores.
+            </p>
+
+            <div className="flex items-center gap-2 pt-1">
+              <a
+                href={PROFILE_INFO.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-lg bg-[#2D0812] border border-rose-900/60 hover:border-[#C8A261] hover:text-[#E8D5B0] flex items-center justify-center transition-colors"
+                title="Instagram Dra. Beatriz"
+              >
+                <InstagramIcon className="w-4 h-4 text-[#C8A261]" />
+              </a>
+              <a
+                href={PROFILE_INFO.officeInstagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-lg bg-[#2D0812] border border-rose-900/60 hover:border-[#C8A261] hover:text-[#E8D5B0] flex items-center justify-center transition-colors"
+                title="Instagram FV Advogados"
+              >
+                <InstagramIcon className="w-4 h-4 text-[#C8A261]" />
+              </a>
+              <a
+                href={PROFILE_INFO.lattesUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-lg bg-[#2D0812] border border-rose-900/60 hover:border-[#C8A261] hover:text-[#E8D5B0] flex items-center justify-center transition-colors"
+                title="Currículo Lattes CNPq"
+              >
+                <LattesIcon className="w-4 h-4 text-[#C8A261]" />
+              </a>
+            </div>
           </div>
 
-          <div className="flex items-center gap-3">
-            <img
-              src="/images/fv-logo.jpg"
-              alt="FV Advogados Associados"
-              className="w-10 h-10 rounded-full border border-white/20 object-cover"
-            />
-            <div className="text-xs">
-              <p className="font-bold text-white">{PROFILE_INFO.officeName}</p>
-              <p className="text-rose-200/80">Itabuna - Bahia • {PROFILE_INFO.officePhone}</p>
+          {/* Links de Navegação */}
+          <div className="md:col-span-3 space-y-3">
+            <h5 className="text-xs uppercase tracking-wider font-bold text-[#E8D5B0]">
+              Navegação
+            </h5>
+            <ul className="space-y-2">
+              <li>
+                <a href="#inicio" className="hover:text-white transition-colors">
+                  Início
+                </a>
+              </li>
+              <li>
+                <a href="#atuacao" className="hover:text-white transition-colors">
+                  Áreas de Atuação &amp; Escritório
+                </a>
+              </li>
+              <li>
+                <a href="#sobre" className="hover:text-white transition-colors">
+                  Perfil &amp; Trajetória
+                </a>
+              </li>
+              <li>
+                <a href="#artigos" className="hover:text-white transition-colors">
+                  Artigos &amp; Publicações
+                </a>
+              </li>
+              <li>
+                <a href="#contato" className="hover:text-white transition-colors">
+                  Contato &amp; Atendimento
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Atendimento & Locais */}
+          <div className="md:col-span-4 space-y-3">
+            <h5 className="text-xs uppercase tracking-wider font-bold text-[#E8D5B0]">
+              Atendimento Jurídico
+            </h5>
+            <p className="text-xs text-rose-200/80 leading-relaxed">
+              Itabuna, Ilhéus e sul da Bahia — Atendimento presencial no escritório FV Advogados Associados ou telepresencial em todo o Brasil.
+            </p>
+            <div className="space-y-1 pt-1 font-mono text-[11px] text-rose-200/90">
+              <p>Telefone: {PROFILE_INFO.officePhone}</p>
+              <p>E-mail: {PROFILE_INFO.emailOffice}</p>
+              <p>Atuação: {PROFILE_INFO.officeSince}</p>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-14 border-b border-white/10">
-          {/* Coluna 1: Newsletter / Informativo */}
-          <div className="lg:col-span-4 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
-              Receba informativos jurídicos
-            </h4>
-            {newsletterSuccess ? (
-              <div className="p-4 rounded-xl bg-white/10 text-xs text-rose-100">
-                Cadastro realizado! Você receberá nossas orientações jurídicas para empresas
-                e trabalhadores.
-              </div>
-            ) : (
-              <form onSubmit={handleNewsletterSubmit} className="space-y-2.5">
-                <input
-                  type="text"
-                  placeholder="Nome"
-                  value={newsletter.nome}
-                  onChange={(e) => setNewsletter({ ...newsletter, nome: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-lg bg-white/8 border border-white/15 text-xs text-white placeholder-rose-200/50 focus:outline-none focus:border-rose-300"
-                />
-                <input
-                  type="email"
-                  required
-                  placeholder="E-mail"
-                  value={newsletter.email}
-                  onChange={(e) => setNewsletter({ ...newsletter, email: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-lg bg-white/8 border border-white/15 text-xs text-white placeholder-rose-200/50 focus:outline-none focus:border-rose-300"
-                />
-                <button
-                  type="submit"
-                  className="w-full py-2.5 px-4 rounded-lg bg-white text-[#380811] font-bold text-xs flex items-center justify-between hover:bg-rose-50 transition cursor-pointer"
-                >
-                  <span>Cadastrar</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </button>
-              </form>
-            )}
-          </div>
+        {/* Rodapé Inferior com Créditos */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-rose-200/60">
+          <p>
+            © {new Date().getFullYear()} Dra. Beatriz Teixeira Figueiredo — Todos os direitos reservados.
+          </p>
 
-          {/* Coluna 2: Navegação */}
-          <div className="lg:col-span-2 space-y-2.5 text-xs">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
-              Navegação
-            </h4>
-            <button
-              onClick={() => onScrollTo('inicio')}
-              className="block hover:text-white transition cursor-pointer"
-            >
-              Início
-            </button>
-            <button
-              onClick={() => onScrollTo('atuacao')}
-              className="block hover:text-white transition cursor-pointer"
-            >
-              Áreas de Atuação
-            </button>
-            <button
-              onClick={() => onScrollTo('sobre')}
-              className="block hover:text-white transition cursor-pointer"
-            >
-              Sobre & Trajetória
-            </button>
-            <button
-              onClick={() => onScrollTo('producao')}
-              className="block hover:text-white transition cursor-pointer"
-            >
-              Artigos & Pesquisa
-            </button>
-            <button
-              onClick={() => onScrollTo('duvidas')}
-              className="block hover:text-white transition cursor-pointer"
-            >
-              Dúvidas Frequentes
-            </button>
-            <button
-              onClick={() => onScrollTo('contato')}
-              className="block hover:text-white transition cursor-pointer"
-            >
-              Agendar Consulta
-            </button>
-            <button
-              onClick={onOpenPhotoModal}
-              className="block text-rose-300 hover:text-white transition cursor-pointer pt-1"
-            >
-              Personalizar Fotos
-            </button>
-          </div>
-
-          {/* Coluna 3: Áreas de Atuação */}
-          <div className="lg:col-span-3 space-y-2.5 text-xs">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
-              Áreas de Atuação
-            </h4>
-            {AREAS_ATUACAO.map((area) => (
-              <button
-                key={area.id}
-                onClick={() => onScrollTo('atuacao')}
-                className="block text-left hover:text-white transition cursor-pointer"
-              >
-                {area.title}
-              </button>
-            ))}
-          </div>
-
-          {/* Coluna 4: Contato & Escritório */}
-          <div className="lg:col-span-3 space-y-3 text-xs">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
-              Contato & Escritório
-            </h4>
-            <p className="flex items-center gap-2.5">
-              <Building2 className="w-4 h-4 text-rose-300 shrink-0" />
-              <span>FV Advogados Associados (Desde 1990)</span>
-            </p>
-            <p className="flex items-center gap-2.5">
-              <Phone className="w-4 h-4 text-rose-300 shrink-0" />
-              <span>{PROFILE_INFO.officePhone}</span>
-            </p>
-            <p className="flex items-center gap-2.5">
-              <InstagramIcon className="w-4 h-4 text-rose-300 shrink-0" />
+          <div className="flex items-center gap-4">
+            <p>
+              Desenvolvido por{' '}
               <a
-                href={PROFILE_INFO.instagramUrl}
+                href="https://github.com/Igor8818"
                 target="_blank"
-                rel="noreferrer"
-                className="hover:text-white underline"
+                rel="noopener noreferrer"
+                className="text-rose-200 hover:text-[#E8D5B0] transition-colors underline underline-offset-2"
               >
-                {PROFILE_INFO.instagramHandle}
+                Igor Hagge (@igor_hagge)
               </a>
             </p>
-            <p className="flex items-start gap-2.5">
-              <MapPin className="w-4 h-4 text-rose-300 shrink-0 mt-0.5" />
-              <span>Itabuna — Bahia (Atendimento Presencial e Online)</span>
-            </p>
+            <button
+              onClick={scrollToTop}
+              className="p-2 rounded-lg bg-[#2D0812] border border-rose-900/60 text-rose-200 hover:text-white hover:border-[#C8A261] transition-colors"
+              title="Voltar ao topo"
+            >
+              <ArrowUp className="w-3.5 h-3.5" />
+            </button>
           </div>
         </div>
 
-        {/* Linha inferior de créditos */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-rose-200/75">
-          <div>
-            <p className="font-semibold text-white">
-              {PROFILE_INFO.name} — {PROFILE_INFO.education}
-            </p>
-            <p className="mt-1">
-              © {new Date().getFullYear()} {PROFILE_INFO.shortName} •{' '}
-              {PROFILE_INFO.officeName}. Todos os direitos reservados.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3">
-            <a
-              href={PROFILE_INFO.instagramUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="px-3 h-9 rounded-full border border-white/20 hover:bg-white/15 flex items-center gap-1.5 text-white transition text-[11px] font-semibold"
-            >
-              <InstagramIcon className="w-3.5 h-3.5" />
-              {PROFILE_INFO.instagramHandle}
-            </a>
-            <a
-              href={PROFILE_INFO.officeInstagramUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="px-3 h-9 rounded-full border border-white/20 hover:bg-white/15 flex items-center gap-1.5 text-white transition text-[11px] font-semibold"
-            >
-              <Building2 className="w-3.5 h-3.5" />
-              @fvadvogadosassociados
-            </a>
-            <a
-              href={PROFILE_INFO.lattesUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="px-3 h-9 rounded-full border border-white/20 hover:bg-white/15 flex items-center gap-1.5 text-white transition text-[11px] font-semibold"
-            >
-              <GraduationCap className="w-3.5 h-3.5" />
-              Lattes CNPq
-            </a>
-          </div>
+        <div className="mt-4 pt-4 border-t border-rose-950/60 text-center text-[10px] text-rose-300/40">
+          Este site possui caráter estritamente informativo, institucional e acadêmico, em total conformidade com o Provimento nº 205/2021 e o Código de Ética e Disciplina da OAB.
         </div>
       </div>
     </footer>
   );
-}
+};

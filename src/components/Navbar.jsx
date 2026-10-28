@@ -1,107 +1,144 @@
-import React, { useState } from 'react';
-import { Scale, Menu, X, ArrowRight } from 'lucide-react';
-import { InstagramIcon } from './Icons';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, ArrowUpRight, Camera } from 'lucide-react';
 import { PROFILE_INFO } from '../data/siteData';
 
-export default function Navbar({ onScrollTo }) {
+export const Navbar = ({ onOpenPhotoCustomizer }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navItems = [
-    { id: 'inicio', label: 'Início' },
-    { id: 'atuacao', label: 'Áreas de Atuação' },
-    { id: 'sobre', label: 'Sobre & Trajetória' },
-    { id: 'producao', label: 'Artigos & Pesquisa' },
-    { id: 'duvidas', label: 'Dúvidas' },
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { label: 'Início', href: '#inicio' },
+    { label: 'Especialidades', href: '#atuacao' },
+    { label: 'Perfil & Cátedra', href: '#sobre' },
+    { label: 'Artigos', href: '#artigos' },
+    { label: 'Contato', href: '#contato' },
   ];
 
-  const handleNavClick = (id) => {
-    setMobileMenuOpen(false);
-    onScrollTo(id);
-  };
-
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Logotipo Dra. Beatriz Figueiredo */}
-        <button
-          onClick={() => handleNavClick('inicio')}
-          className="text-left group cursor-pointer flex items-center gap-3"
-        >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#9E1B32] to-[#5E0D1B] text-white flex items-center justify-center shadow-sm">
-            <Scale className="w-5 h-5" />
-          </div>
-          <div>
-            <span className="block text-lg sm:text-xl font-bold tracking-tight text-stone-900 group-hover:text-[#9E1B32] transition-colors">
-              {PROFILE_INFO.shortName}
-            </span>
-            <span className="block text-[10px] font-semibold tracking-[0.18em] uppercase text-stone-500">
-              FV Advogados Associados • OAB/BA
-            </span>
-          </div>
-        </button>
-
-        {/* Navegação Desktop Enxuta (Single-Page) */}
-        <nav className="hidden md:flex items-center gap-1 lg:gap-2">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => handleNavClick(item.id)}
-              className="px-3.5 py-2 rounded-lg text-sm font-medium text-stone-700 hover:text-[#9E1B32] hover:bg-[#FDF2F3]/60 transition cursor-pointer"
-            >
-              {item.label}
-            </button>
-          ))}
-
-          <a
-            href={PROFILE_INFO.instagramUrl}
-            target="_blank"
-            rel="noreferrer"
-            title={PROFILE_INFO.instagramHandle}
-            className="p-2 rounded-lg text-stone-600 hover:text-[#9E1B32] transition"
-          >
-            <InstagramIcon className="w-4 h-4" />
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-[#2D0812]/95 backdrop-blur-md border-b-2 border-[#C8A261] shadow-xl shadow-black/30 py-3.5'
+          : 'bg-transparent py-5'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between">
+          {/* Logo / Nome */}
+          <a href="#inicio" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-lg overflow-hidden border border-[#C8A261]/50 bg-[#1E050C] flex-shrink-0 group-hover:border-[#DFBD7F] shadow-md transition-colors">
+              <img
+                src="./images/fv-logo.jpg"
+                alt="Logo FV Advogados Associados"
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                }}
+              />
+            </div>
+            <div>
+              <span className="font-serif-editorial text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-[#DFBD7F] transition-colors block leading-tight">
+                Beatriz Figueiredo
+              </span>
+              <span className="text-[10px] sm:text-xs text-[#C8A261] font-semibold tracking-wider uppercase block">
+                Advogada • FV Advogados (Desde 1990)
+              </span>
+            </div>
           </a>
 
-          <button
-            onClick={() => handleNavClick('contato')}
-            className="ml-2 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#9E1B32] hover:bg-[#821428] text-white text-xs sm:text-sm font-semibold shadow-sm transition cursor-pointer"
-          >
-            Agendar Consulta <ArrowRight className="w-3.5 h-3.5" />
-          </button>
-        </nav>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-7">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-sm font-medium text-slate-200 hover:text-[#DFBD7F] transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
 
-        {/* Botão Menu Mobile */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2.5 rounded-xl border border-stone-200 text-stone-700"
-            aria-label="Abrir Menu"
-          >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          {/* Action Buttons */}
+          <div className="hidden sm:flex items-center gap-3">
+            {onOpenPhotoCustomizer && (
+              <button
+                onClick={onOpenPhotoCustomizer}
+                className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors border border-[#C8A261]/40 bg-[#1E050C]/60 text-xs flex items-center gap-1.5 shadow-sm"
+                title="Personalizar foto"
+              >
+                <Camera className="w-3.5 h-3.5 text-[#C8A261]" />
+                <span className="hidden lg:inline text-[11px] font-medium">Foto</span>
+              </button>
+            )}
+            <a
+              href={PROFILE_INFO.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#C8A261] hover:bg-[#DFBD7F] text-[#2D0812] font-bold text-xs sm:text-sm shadow-md shadow-[#C8A261]/20 hover:shadow-[#C8A261]/40 transition-all transform hover:-translate-y-0.5"
+            >
+              <span>Falar com Dra. Beatriz</span>
+              <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="flex sm:hidden items-center gap-2">
+            {onOpenPhotoCustomizer && (
+              <button
+                onClick={onOpenPhotoCustomizer}
+                className="p-2 rounded-lg text-slate-300 hover:text-white bg-[#1E050C] border border-[#C8A261]/40"
+                aria-label="Trocar Foto"
+              >
+                <Camera className="w-4 h-4 text-[#C8A261]" />
+              </button>
+            )}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-lg text-slate-200 hover:text-white bg-[#1E050C] border border-slate-700"
+              aria-label="Abrir Menu"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-white" />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Menu Mobile */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-stone-200 px-4 pt-2 pb-5 space-y-1.5">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => handleNavClick(item.id)}
-              className="block w-full text-left px-4 py-2.5 rounded-xl text-sm font-semibold text-stone-800 hover:bg-[#FDF2F3] hover:text-[#9E1B32]"
+        <div className="md:hidden bg-[#2D0812]/98 backdrop-blur-xl border-b-2 border-[#C8A261] px-6 py-5 space-y-4 shadow-2xl">
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-base font-medium text-slate-200 hover:text-[#DFBD7F] transition-colors py-1"
             >
-              {item.label}
-            </button>
+              {link.label}
+            </a>
           ))}
-          <button
-            onClick={() => handleNavClick('contato')}
-            className="block w-full text-center mt-3 px-4 py-3 rounded-xl bg-[#9E1B32] text-white text-sm font-semibold"
-          >
-            Agendar Consulta
-          </button>
+          <div className="pt-3 border-t border-rose-900/50">
+            <a
+              href={PROFILE_INFO.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#C8A261] hover:bg-[#DFBD7F] text-[#2D0812] font-bold text-sm shadow-md"
+            >
+              <span>Falar pelo WhatsApp</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
+          </div>
         </div>
       )}
     </header>
   );
-}
+};

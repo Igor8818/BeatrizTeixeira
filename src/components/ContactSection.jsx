@@ -1,275 +1,208 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
-  ArrowRight,
-  CheckCircle2,
-  Mail,
-  MessageCircle,
   Phone,
-  Building2,
+  Mail,
+  MapPin,
+  ArrowRight,
+  ShieldCheck,
+  Clock,
 } from 'lucide-react';
-import { AREAS_ATUACAO, PROFILE_INFO } from '../data/siteData';
+import { PROFILE_INFO, AREAS_ATUACAO } from '../data/siteData';
+import { WhatsAppIcon } from './Icons';
 
-export default function ContactSection({ photoUrl, preselectedArea }) {
+export const ContactSection = () => {
   const [formData, setFormData] = useState({
     nome: '',
-    email: '',
-    telefone: '',
-    area: preselectedArea || '',
-    perfilCliente: 'Pessoa Física / Trabalhador',
-    preferenciaContato: 'WhatsApp',
+    area: AREAS_ATUACAO[0].title,
     mensagem: '',
   });
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
-  useEffect(() => {
-    if (preselectedArea) {
-      setFormData((prev) => ({ ...prev, area: preselectedArea }));
-    }
-  }, [preselectedArea]);
-
-  const handleFormSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    const text = `Olá, Dra. Beatriz Figueiredo!%0A%0A*Nome:* ${encodeURIComponent(
+      formData.nome
+    )}%0A*Área de Interesse:* ${encodeURIComponent(
+      formData.area
+    )}%0A*Mensagem:* ${encodeURIComponent(formData.mensagem)}`;
+    window.open(`https://wa.me/${PROFILE_INFO.whatsappNumber}?text=${text}`, '_blank');
   };
 
   return (
-    <section
-      id="contato"
-      className="pt-12 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
-    >
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
-        {/* Foto da Advogada à Esquerda */}
-        <div className="lg:col-span-5 relative flex flex-col items-center">
-          <div className="relative w-full max-w-md rounded-3xl overflow-hidden bg-gradient-to-t from-[#3A0812] via-[#7D1326] to-[#9E1B32] pt-6 px-4 flex items-end justify-center shadow-xl">
-            <img
-              src={photoUrl}
-              alt="Dra. Beatriz Figueiredo Atendimento"
-              className="relative z-10 w-full h-[430px] object-cover object-top rounded-t-2xl"
-            />
-          </div>
-
-          <div className="w-full max-w-md mt-4 rounded-2xl bg-[#FDF6F7] border border-rose-100 p-4 flex items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#9E1B32] text-white flex items-center justify-center shrink-0">
-                <Building2 className="w-5 h-5" />
+    <section id="contato" className="py-16 md:py-28 bg-[#2D0812] text-white relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          {/* Coluna Esquerda: Canais Diretos */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#3D0E1A] border border-[#C8A261]/40 text-xs text-[#E8D5B0] font-semibold uppercase tracking-wider">
+                Atendimento Jurídico
               </div>
-              <div>
-                <p className="text-xs font-bold text-stone-900">
-                  FV Advogados Associados • Itabuna/BA
-                </p>
-                <p className="text-xs text-stone-600">
-                  Atendimento: {PROFILE_INFO.officePhone}
-                </p>
+              <h2 className="font-serif-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+                Inicie seu atendimento com acolhimento e clareza.
+              </h2>
+              {/* Linha decorativa dourada */}
+              <div className="w-16 h-1 bg-[#C8A261] rounded-full" />
+
+              <p className="text-rose-100/90 text-sm sm:text-base leading-relaxed font-normal">
+                Orientação jurídica individualizada para pessoas físicas, empresas, trabalhadores e produtores rurais. Atendimento presencial no escritório FV Advogados em Itabuna ou online por videoconferência em todo o Brasil.
+              </p>
+            </div>
+
+            {/* Lista de Contatos */}
+            <div className="space-y-3.5 pt-2">
+              <a
+                href={PROFILE_INFO.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 rounded-xl bg-[#3D0E1A] border border-[#C8A261]/50 hover:border-[#C8A261] transition-colors group shadow-md"
+              >
+                <div className="w-12 h-12 rounded-xl bg-[#C8A261] text-[#2D0812] flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform shadow-md">
+                  <WhatsAppIcon className="w-6 h-6 fill-[#2D0812]" />
+                </div>
+                <div>
+                  <span className="text-xs text-[#E8D5B0] font-bold block uppercase tracking-wider">
+                    WhatsApp &amp; Atendimento Rápido
+                  </span>
+                  <span className="text-base font-bold text-white">
+                    {PROFILE_INFO.officePhone}
+                  </span>
+                </div>
+              </a>
+
+              <div className="flex items-center gap-4 p-4 rounded-xl bg-[#3D0E1A] border border-rose-900/50">
+                <div className="w-12 h-12 rounded-xl bg-[#2D0812] border border-rose-900/50 flex items-center justify-center flex-shrink-0 text-[#E8D5B0]">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-xs text-rose-200/70 font-medium block">
+                    Telefone Escritório (FV Advogados Associados)
+                  </span>
+                  <span className="text-sm sm:text-base font-bold text-white">
+                    {PROFILE_INFO.officePhone}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 p-4 rounded-xl bg-[#3D0E1A] border border-rose-900/50">
+                <div className="w-12 h-12 rounded-xl bg-[#2D0812] border border-rose-900/50 flex items-center justify-center flex-shrink-0 text-[#E8D5B0]">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-xs text-rose-200/70 font-medium block">
+                    E-mail Institucional
+                  </span>
+                  <span className="text-sm font-bold text-white block">
+                    {PROFILE_INFO.emailOffice}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 p-4 rounded-xl bg-[#3D0E1A] border border-rose-900/50">
+                <div className="w-12 h-12 rounded-xl bg-[#2D0812] border border-rose-900/50 flex items-center justify-center flex-shrink-0 text-[#E8D5B0]">
+                  <MapPin className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-xs text-rose-200/70 font-medium block">
+                    Localização &amp; Sede
+                  </span>
+                  <span className="text-sm font-bold text-white">
+                    {PROFILE_INFO.city}
+                  </span>
+                </div>
               </div>
             </div>
-            <a
-              href={`tel:${PROFILE_INFO.officePhone.replace(/\D/g, '')}`}
-              className="px-3.5 py-2 rounded-xl bg-white border border-rose-200 text-[#9E1B32] text-xs font-bold hover:bg-[#9E1B32] hover:text-white transition"
-            >
-              Ligar
-            </a>
-          </div>
-        </div>
-
-        {/* Formulário Completo à Direita */}
-        <div className="lg:col-span-7">
-          <div className="mb-6">
-            <span className="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FBE9EA] text-[#9E1B32] mb-2">
-              Contato
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-stone-900">
-              Agende sua <span className="text-[#9E1B32]">consulta</span>
-            </h2>
-            <p className="text-stone-600 text-sm mt-1">
-              Presencial em Itabuna na <strong>FV Advogados Associados</strong> ou online por
-              videoconferência.
-            </p>
           </div>
 
-          <div className="bg-white rounded-3xl p-6 sm:p-9 border border-stone-100 shadow-[0_12px_45px_rgb(0,0,0,0.06)]">
-            {formSubmitted ? (
-              <div className="py-10 text-center space-y-4">
-                <div className="w-16 h-16 rounded-full bg-[#FDF2F3] text-[#9E1B32] flex items-center justify-center mx-auto">
-                  <CheckCircle2 className="w-9 h-9" />
-                </div>
-                <h3 className="text-2xl font-bold text-stone-900">
-                  Solicitação registrada!
+          {/* Coluna Direita: Formulário Direcionado para WhatsApp */}
+          <div className="lg:col-span-7 bg-[#3D0E1A] border-2 border-[#C8A261]/30 rounded-2xl p-6 sm:p-9 shadow-2xl relative">
+            <div className="flex items-center justify-between pb-6 border-b border-rose-900/50">
+              <div>
+                <h3 className="font-serif-editorial text-2xl sm:text-3xl font-bold text-white">
+                  Formulário de Atendimento
                 </h3>
-                <p className="text-stone-600 max-w-md mx-auto text-sm leading-relaxed">
-                  Obrigado, <strong>{formData.nome || 'visitante'}</strong>. Clique abaixo
-                  para enviar sua mensagem diretamente no WhatsApp de atendimento.
+                <p className="text-xs text-rose-200/80 mt-1">
+                  Envie sua mensagem para iniciar contato diretamente via WhatsApp.
                 </p>
-                <div className="pt-4 flex flex-wrap justify-center gap-3">
-                  <a
-                    href={`https://wa.me/${PROFILE_INFO.whatsappNumber}?text=${encodeURIComponent(
-                      `Olá, Dra. Beatriz! Meu nome é ${formData.nome} (${formData.perfilCliente}). Gostaria de atendimento sobre ${
-                        formData.area || 'Consultoria Jurídica'
-                      }. ${formData.mensagem}`
-                    )}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#25D366] text-white font-semibold text-sm shadow-md hover:opacity-95 transition"
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    Continuar no WhatsApp
-                  </a>
-                  <button
-                    onClick={() => setFormSubmitted(false)}
-                    className="px-5 py-3 rounded-full border border-stone-200 text-stone-700 text-sm font-medium hover:bg-stone-50 transition cursor-pointer"
-                  >
-                    Editar dados
-                  </button>
-                </div>
               </div>
-            ) : (
-              <form onSubmit={handleFormSubmit} className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-bold text-stone-800 mb-1.5">
-                      Nome completo ou Empresa
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Seu nome ou razão social"
-                      value={formData.nome}
-                      onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-[#9E1B32] transition"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-stone-800 mb-1.5">
-                      E-mail
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="seu@email.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-[#9E1B32] transition"
-                    />
-                  </div>
-                </div>
+              <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C8A261]/20 border border-[#C8A261]/40 text-[#E8D5B0] text-xs font-semibold">
+                <Clock className="w-3.5 h-3.5" />
+                <span>Atendimento Ágil</span>
+              </div>
+            </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-bold text-stone-800 mb-1.5">
-                      Telefone / WhatsApp
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      placeholder="(73) 99999-9999"
-                      value={formData.telefone}
-                      onChange={(e) =>
-                        setFormData({ ...formData, telefone: e.target.value })
-                      }
-                      className="w-full px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-[#9E1B32] transition"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-stone-800 mb-1.5">
-                      Qual área jurídica procura?
-                    </label>
-                    <select
-                      value={formData.area}
-                      onChange={(e) => setFormData({ ...formData, area: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-stone-200 text-sm text-stone-700 bg-white focus:outline-none focus:border-[#9E1B32] transition"
-                    >
-                      <option value="">Selecione uma opção</option>
-                      {AREAS_ATUACAO.map((a) => (
-                        <option key={a.id} value={a.title}>
-                          {a.title}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
+            <form onSubmit={handleSubmit} className="space-y-4 pt-6">
+              <div>
+                <label className="block text-xs font-bold text-rose-100 uppercase tracking-wider mb-2">
+                  Seu Nome Completo
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Ex: Maria dos Santos"
+                  value={formData.nome}
+                  onChange={(e) =>
+                    setFormData({ ...formData, nome: e.target.value })
+                  }
+                  className="w-full px-4 py-3 rounded-xl bg-[#2D0812] border border-rose-900/60 text-white placeholder-rose-200/40 text-sm focus:outline-none focus:border-[#C8A261] transition-colors"
+                />
+              </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
-                  <div>
-                    <label className="block text-xs font-bold text-stone-800 mb-1.5">
-                      Você busca atendimento para:
-                    </label>
-                    <select
-                      value={formData.perfilCliente}
-                      onChange={(e) =>
-                        setFormData({ ...formData, perfilCliente: e.target.value })
-                      }
-                      className="w-full px-4 py-3 rounded-xl border border-stone-200 text-sm text-stone-700 bg-white focus:outline-none focus:border-[#9E1B32] transition"
-                    >
-                      <option value="Pessoa Física / Trabalhador">
-                        Pessoa Física / Trabalhador
-                      </option>
-                      <option value="Empresa / Empregador">Empresa / Empregador</option>
-                      <option value="Produtor Rural">Produtor Rural</option>
-                    </select>
-                  </div>
+              <div>
+                <label className="block text-xs font-bold text-rose-100 uppercase tracking-wider mb-2">
+                  Área de Interesse
+                </label>
+                <select
+                  value={formData.area}
+                  onChange={(e) =>
+                    setFormData({ ...formData, area: e.target.value })
+                  }
+                  className="w-full px-4 py-3 rounded-xl bg-[#2D0812] border border-rose-900/60 text-white text-sm focus:outline-none focus:border-[#C8A261] transition-colors"
+                >
+                  {AREAS_ATUACAO.map((a) => (
+                    <option key={a.id} value={a.title}>
+                      {a.title}
+                    </option>
+                  ))}
+                  <option value="Consultoria Geral / Outra Área">
+                    Outra Demanda / Consultoria Preventiva
+                  </option>
+                </select>
+              </div>
 
-                  <div>
-                    <label className="block text-xs font-bold text-stone-800 mb-1.5">
-                      Como prefere ser contatado?
-                    </label>
-                    <div className="grid grid-cols-3 gap-2">
-                      {['WhatsApp', 'Ligação', 'E-mail'].map((metodo) => {
-                        const active = formData.preferenciaContato === metodo;
-                        return (
-                          <button
-                            type="button"
-                            key={metodo}
-                            onClick={() =>
-                              setFormData({ ...formData, preferenciaContato: metodo })
-                            }
-                            className={`py-2.5 px-2 rounded-xl text-xs font-semibold border flex items-center justify-center gap-1.5 transition cursor-pointer ${
-                              active
-                                ? 'bg-[#FDF2F3] border-[#9E1B32] text-[#9E1B32]'
-                                : 'border-stone-200 text-stone-600 hover:bg-stone-50'
-                            }`}
-                          >
-                            {metodo === 'WhatsApp' && (
-                              <MessageCircle className="w-3.5 h-3.5" />
-                            )}
-                            {metodo === 'Ligação' && <Phone className="w-3.5 h-3.5" />}
-                            {metodo === 'E-mail' && <Mail className="w-3.5 h-3.5" />}
-                            {metodo}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
+              <div>
+                <label className="block text-xs font-bold text-rose-100 uppercase tracking-wider mb-2">
+                  Breve Resumo da Demanda
+                </label>
+                <textarea
+                  rows="4"
+                  required
+                  placeholder="Descreva brevemente a sua situação ou dúvida..."
+                  value={formData.mensagem}
+                  onChange={(e) =>
+                    setFormData({ ...formData, mensagem: e.target.value })
+                  }
+                  className="w-full px-4 py-3 rounded-xl bg-[#2D0812] border border-rose-900/60 text-white placeholder-rose-200/40 text-sm focus:outline-none focus:border-[#C8A261] transition-colors"
+                />
+              </div>
 
-                <div>
-                  <label className="block text-xs font-bold text-stone-800 mb-1.5">
-                    Mensagem{' '}
-                    <span className="font-normal text-stone-400">(opcional)</span>
-                  </label>
-                  <textarea
-                    rows={3}
-                    placeholder="Conte brevemente sua situação ou dúvida jurídica"
-                    value={formData.mensagem}
-                    onChange={(e) => setFormData({ ...formData, mensagem: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-[#9E1B32] transition"
-                  />
-                </div>
+              <div className="pt-2">
+                <button
+                  type="submit"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-[#C8A261] hover:bg-[#DFBD7F] text-[#2D0812] font-bold text-sm sm:text-base shadow-xl shadow-[#C8A261]/25 transition-all transform hover:-translate-y-0.5"
+                >
+                  <span>Enviar Mensagem via WhatsApp</span>
+                  <ArrowRight className="w-5 h-5 stroke-[2.5]" />
+                </button>
+              </div>
 
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
-                  <p className="text-xs text-stone-500">
-                    Seus dados são protegidos pelo sigilo profissional da advocacia.
-                  </p>
-                  <button
-                    type="submit"
-                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-[#9E1B32] hover:bg-[#7D1326] text-white font-semibold text-sm shadow-lg shadow-[#9E1B32]/20 transition cursor-pointer shrink-0"
-                  >
-                    Solicitar agendamento <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </form>
-            )}
+              <p className="text-[11px] text-center text-rose-200/70 pt-2 flex items-center justify-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-[#C8A261]" />
+                <span>Atendimento regido pelo sigilo profissional da OAB.</span>
+              </p>
+            </form>
           </div>
         </div>
       </div>
     </section>
   );
-}
+};
