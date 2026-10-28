@@ -1,15 +1,31 @@
 @import "tailwindcss";
 
 @layer base {
+  /* Previne o azul padrão ao tocar em qualquer elemento em smartphones (iOS / Android) */
+  *, *::before, *::after {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #1E090F;
     line-height: 1.7;
+    background-color: #2D0812;
   }
 
   h1, h2, h3, .font-serif-editorial {
     font-family: 'Cormorant Garamond', Georgia, serif;
     letter-spacing: -0.01em;
+  }
+
+  /* Outline acessível no tom dourado champagne da identidade visual */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid #C8A261;
+    outline-offset: 2px;
   }
 }
 

@@ -44,7 +44,7 @@ export const PROFILE_INFO = {
 
 export const DEFAULT_LAWYER_PHOTOS = {
   hero: `${import.meta.env.BASE_URL}images/beatriz-figueiredo.jpg`,
-  about: `${import.meta.env.BASE_URL}images/beatriz-figueiredo.jpg`,
+  about: `${import.meta.env.BASE_URL}images/beatriz-figueiredo-livros.jpg`,
   contact: `${import.meta.env.BASE_URL}images/beatriz-figueiredo.jpg`,
   fvLogo: `${import.meta.env.BASE_URL}images/fv-logo.jpg`,
 };
@@ -54,6 +54,11 @@ export const PHOTO_PRESETS = [
     id: 'principal',
     label: 'Retrato Executivo Oficial',
     url: `${import.meta.env.BASE_URL}images/beatriz-figueiredo.jpg`,
+  },
+  {
+    id: 'livros',
+    label: 'Retrato Acadêmico com Obras Jurídicas & Vade Mecum',
+    url: `${import.meta.env.BASE_URL}images/beatriz-figueiredo-livros.jpg`,
   },
 ];
 

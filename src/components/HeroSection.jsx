@@ -124,27 +124,25 @@ export const HeroSection = ({ photos }) => {
 
           {/* Coluna Direita: Retrato em Destaque Calibrado para Mobile */}
           <div className="lg:col-span-5 flex justify-center relative order-1 lg:order-2">
-            <div className="relative w-full max-w-[260px] sm:max-w-[340px] lg:max-w-[420px] aspect-[4/5] flex items-center justify-center">
+            <div className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] aspect-[4/5] flex items-center justify-center">
               {/* Moldura deslocada dourada fina */}
-              <div className="absolute inset-1.5 sm:inset-2 -right-1.5 -bottom-1.5 sm:-right-2 sm:-bottom-2 rounded-2xl border-2 border-[#C8A261]/40 pointer-events-none" />
-              
-              {/* Moldura de fundo sólida em Vinho Rubi */}
-              <div className="absolute inset-1.5 sm:inset-2 rounded-2xl bg-gradient-to-b from-[#3D0E1A] to-[#2D0812] border border-rose-900/50 shadow-2xl overflow-hidden" />
+              <div className="absolute inset-0 translate-x-2.5 translate-y-2.5 sm:translate-x-3.5 sm:translate-y-3.5 rounded-2xl border-2 border-[#C8A261]/50 pointer-events-none" />
 
-              {/* Foto Principal Nítida */}
-              <div className="relative z-10 w-full h-full flex items-end justify-center overflow-hidden rounded-2xl pt-3 sm:pt-4">
+              {/* Foto Principal Nítida preenchendo 100% o quadradinho sem sobras */}
+              <div className="relative z-10 w-full h-full rounded-2xl overflow-hidden border border-[#C8A261]/40 shadow-2xl bg-[#3D0E1A]">
                 <img
                   src={photos?.hero || './images/beatriz-figueiredo.jpg'}
                   alt="Dra. Beatriz Teixeira Figueiredo"
-                  className="w-full h-full object-contain object-bottom drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)] transition-all duration-500 filter contrast-105"
+                  className="w-full h-full object-cover object-top filter contrast-105 transition-all duration-500"
                   onError={(e) => {
                     e.target.src = './images/beatriz-figueiredo.jpg';
                   }}
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1E050C]/80 via-transparent to-transparent pointer-events-none" />
               </div>
 
               {/* Selo Circular Giratório Champagne */}
-              <div className="absolute -top-2.5 -right-2.5 sm:-top-3 sm:-right-3 z-20 w-16 h-16 sm:w-22 sm:h-22 flex items-center justify-center">
+              <div className="absolute -top-3 -right-3 sm:-top-3.5 sm:-right-3.5 z-20 w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center">
                 <div className="absolute inset-0 rounded-full bg-[#2D0812] border-2 border-[#C8A261] shadow-xl flex items-center justify-center">
                   <div className="w-full h-full animate-spin-slow">
                     <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -165,13 +163,13 @@ export const HeroSection = ({ photos }) => {
               </div>
 
               {/* Floating Badge - Escritório */}
-              <div className="absolute -bottom-2 left-2 sm:left-4 z-20 bg-[#2D0812]/95 border border-[#C8A261]/40 backdrop-blur-md px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl shadow-xl flex items-center gap-1.5 sm:gap-2">
-                <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-lg bg-[#C8A261]/20 flex items-center justify-center flex-shrink-0">
+              <div className="absolute -bottom-2.5 left-2 sm:left-4 z-20 bg-[#2D0812]/95 border border-[#C8A261]/50 backdrop-blur-md px-3 py-1.5 sm:py-2 rounded-xl shadow-xl flex items-center gap-2">
+                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#C8A261]/20 flex items-center justify-center flex-shrink-0">
                   <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#E8D5B0]" />
                 </div>
                 <div>
                   <p className="text-[8px] sm:text-[9px] text-[#C8A261] font-semibold uppercase tracking-wider">Banca Jurídica</p>
-                  <p className="text-[10px] sm:text-xs font-bold text-white">FV Advogados</p>
+                  <p className="text-[10px] sm:text-xs font-bold text-white">FV Advogados (1990)</p>
                 </div>
               </div>
             </div>

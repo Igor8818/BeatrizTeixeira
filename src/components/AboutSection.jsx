@@ -22,24 +22,23 @@ export const AboutSection = ({ photos }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
-          {/* Coluna Esquerda: Retrato & Destaque Lattes */}
+          {/* Coluna Esquerda: Retrato Acadêmico & Destaque Lattes */}
           <div className="lg:col-span-5 space-y-6 max-w-[320px] sm:max-w-[380px] lg:max-w-none mx-auto w-full">
-            <div className="relative rounded-2xl overflow-hidden border-2 border-[#C8A261]/40 shadow-2xl bg-[#3D0E1A] group">
-              <div className="aspect-[3/4] w-full overflow-hidden">
+            <div className="relative rounded-2xl overflow-hidden border-2 border-[#C8A261]/40 shadow-2xl bg-[#1E050C] group">
+              <div className="aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] w-full overflow-hidden relative">
                 <img
-                  src={photos?.about || './images/beatriz-figueiredo.jpg'}
+                  src={photos?.about || './images/beatriz-figueiredo-livros.jpg'}
                   alt="Dra. Beatriz Teixeira Figueiredo"
                   className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 filter contrast-105"
                   onError={(e) => {
-                    e.target.src = './images/beatriz-figueiredo.jpg';
+                    e.target.src = './images/beatriz-figueiredo-livros.jpg';
                   }}
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1E050C]/60 via-transparent to-transparent pointer-events-none" />
               </div>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-[#2D0812] via-transparent to-transparent" />
-
-              {/* Legenda sobre a foto */}
-              <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-[#2D0812]/95 backdrop-blur-md border border-[#C8A261]/40 shadow-xl">
+              {/* Legenda sobre a foto sem cobrir as obras jurídicas */}
+              <div className="p-4 bg-[#2D0812] border-t border-[#C8A261]/30">
                 <p className="text-xs uppercase tracking-wider text-[#E8D5B0] font-bold">
                   Dra. Beatriz Teixeira Figueiredo
                 </p>
