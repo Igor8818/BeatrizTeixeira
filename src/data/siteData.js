@@ -14,8 +14,8 @@ import {
 
 // ============================================================================
 // DADOS REAIS — DRA. BEATRIZ TEIXEIRA FIGUEIREDO
-// Instagram: @beatrizfigueiredoadv | Escritório: @fvadvogadosassociados (Desde 1990)
-// UESC | Pós-graduanda PUC/RS | FGV | Lattes CNPq ID: 1920374097568395
+// Instagram: @beatrizfigueiredoadv | Escritório: @fvadvogadosassociados (Fundado em 1990)
+// UESC | Pós-graduanda PUC/RS | Lattes CNPq ID: 1920374097568395
 // ============================================================================
 
 export const PROFILE_INFO = {
@@ -23,17 +23,19 @@ export const PROFILE_INFO = {
   shortName: 'Dra. Beatriz Figueiredo',
   role: 'Advogada • FV Advogados Associados',
   tagline: 'Ajudo empresas e trabalhadores a entenderem e protegerem seus direitos.',
-  education: 'UESC | Pós-graduanda PUC/RS | FGV',
+  education: 'UESC | Pós-graduanda PUC/RS',
   instagramUrl: 'https://www.instagram.com/beatrizfigueiredoadv/',
   instagramHandle: '@beatrizfigueiredoadv',
   officeName: 'FV Advogados Associados',
   officeShort: 'FV Advogados',
   officeInstagramUrl: 'https://www.instagram.com/fvadvogadosassociados/',
   officeInstagramHandle: '@fvadvogadosassociados',
-  officeSince: 'Desde 1990',
+  officeFounded: '1990',
+  officeSince: 'Escritório Fundado em 1990',
+  phoneDirect: '+55 (73) 99984-2205',
+  whatsappNumber: '5573999842205',
+  whatsappUrl: 'https://wa.me/5573999842205?text=Ol%C3%A1%2C%20Dra.%20Beatriz%20Figueiredo!%20Gostaria%20de%20agendar%20um%20atendimento.',
   officePhone: '(73) 3211-3550',
-  whatsappNumber: '557332113550',
-  whatsappUrl: 'https://wa.me/557332113550?text=Ol%C3%A1%2C%20Dra.%20Beatriz%20Figueiredo!%20Gostaria%20de%20agendar%20um%20atendimento.',
   emailOffice: 'contato@fvadvogados.com.br',
   city: 'Itabuna & Ilhéus — Bahia',
   lattesUrl: 'http://lattes.cnpq.br/1920374097568395',
@@ -148,21 +150,21 @@ export const CREDENCIAIS_TABS = {
         title: 'Pós-Graduação Lato Sensu',
         institution: 'Pontifícia Universidade Católica do Rio Grande do Sul (PUC/RS)',
         description:
-          'Especialização focada no aprofundamento das transformações jurídicas contemporâneas, governança corporativa e prática advocatícia estratégica.'
+          'Especialização voltada ao aprofundamento das transformações jurídicas contemporâneas, governança corporativa e prática advocatícia estratégica.'
       },
       {
-        period: 'Formação Complementar',
-        title: 'Extensão & Capacitação Executiva',
-        institution: 'Fundação Getulio Vargas (FGV)',
-        description:
-          'Cursos executivos e aperfeiçoamento contínuo voltados à gestão jurídica, resolução estratégica de disputas e compliance.'
-      },
-      {
-        period: 'Graduação',
-        title: 'Bacharel em Direito',
+        period: '2020 — 2026',
+        title: 'Graduação em Direito',
         institution: 'Universidade Estadual de Santa Cruz (UESC)',
         description:
-          'Formação jurídica sólida com histórico de liderança acadêmica, premiações de pesquisa e projetos de extensão comunitária de alto impacto regional.'
+          'Bacharelado em Direito com TCC dedicado ao "Cacau e Crédito Rural: Programa de Recuperação da Lavoura Cacaueira Baiana no Complexo Triunfo-Itumirim, em Una-BA".'
+      },
+      {
+        period: '2025 — 2026',
+        title: 'Monitoria em Direito Ambiental e Agrário',
+        institution: 'Universidade Estadual de Santa Cruz (UESC)',
+        description:
+          'Projeto de ensino "Agrariedade e Sustentabilidade na Emergência Climática: dinâmicas pedagógicas em monitoria sobre Direito Ambiental e Agrário".'
       }
     ]
   },
@@ -171,11 +173,11 @@ export const CREDENCIAIS_TABS = {
     icon: Building2,
     items: [
       {
-        period: 'Desde 1990',
+        period: 'Fundado em 1990',
         title: 'Advogada Integrante — FV Advogados Associados',
         institution: 'Itabuna - Bahia • Atendimento Nacional',
         description:
-          'Atuação em banca tradicional e consolidada no sul da Bahia há mais de 34 anos, prestando consultoria e contencioso cível, empresarial e trabalhista de excelência.'
+          'Atuação na banca jurídica tradicional e consolidada no sul da Bahia há mais de 34 anos (fundada em 1990), prestando consultoria e contencioso cível, empresarial e trabalhista de excelência.'
       },
       {
         period: 'Prática Jurídica',

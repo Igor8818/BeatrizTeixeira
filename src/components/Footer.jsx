@@ -33,7 +33,7 @@ export const Footer = () => {
             </div>
 
             <p className="text-rose-200/80 text-xs leading-relaxed max-w-sm">
-              Graduada pela UESC, Pós-graduanda pela PUC/RS e com capacitações executivas pela FGV. Atuação dedicada à defesa estratégica e assessoria jurídica para empresas e trabalhadores.
+              Graduada em Direito pela UESC e pós-graduanda pela PUC/RS. Atuação na banca FV Advogados Associados (fundada em 1990), com assessoria jurídica e defesa estratégica para empresas, trabalhadores e produtores rurais.
             </p>
 
             <div className="flex items-center gap-2 pt-1">
@@ -109,10 +109,11 @@ export const Footer = () => {
             <p className="text-xs text-rose-200/80 leading-relaxed">
               Itabuna, Ilhéus e sul da Bahia — Atendimento presencial no escritório FV Advogados Associados ou telepresencial em todo o Brasil.
             </p>
-            <div className="space-y-1 pt-1 font-mono text-[11px] text-rose-200/90">
-              <p>Telefone: {PROFILE_INFO.officePhone}</p>
+            <div className="space-y-1.5 pt-1 font-mono text-[11px] text-rose-200/90">
+              <p>WhatsApp: {PROFILE_INFO.phoneDirect}</p>
+              <p>Telefone Escritório: {PROFILE_INFO.officePhone}</p>
               <p>E-mail: {PROFILE_INFO.emailOffice}</p>
-              <p>Atuação: {PROFILE_INFO.officeSince}</p>
+              <p>Escritório: {PROFILE_INFO.officeSince}</p>
             </div>
           </div>
         </div>

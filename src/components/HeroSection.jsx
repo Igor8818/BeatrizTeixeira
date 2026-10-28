@@ -21,7 +21,7 @@ export const HeroSection = ({ photos }) => {
             {/* Tag Institucional Champagne */}
             <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-[#3D0E1A] border border-[#C8A261]/50 text-[11px] sm:text-xs text-[#E8D5B0] font-semibold tracking-wide shadow-md max-w-full truncate">
               <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#C8A261] animate-pulse flex-shrink-0" />
-              <span className="truncate">FV Advogados Associados (Desde 1990) • UESC • PUC/RS • FGV</span>
+              <span className="truncate">FV Advogados Associados (Fundado em 1990) • UESC • Pós PUC/RS</span>
             </div>
 
             {/* Headline Principal - Cormorant Garamond */}
@@ -35,7 +35,7 @@ export const HeroSection = ({ photos }) => {
 
             {/* Subtítulo com excelente contraste */}
             <p className="text-xs sm:text-base text-rose-100/90 max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
-              Atuação dedicada a ajudar empresas e trabalhadores a entenderem e protegerem seus direitos, unindo a tradição de mais de 34 anos da banca <strong className="text-white font-semibold">FV Advogados Associados</strong> à formação contínua pela <strong className="text-white font-semibold">PUC/RS</strong>, <strong className="text-white font-semibold">FGV</strong> e <strong className="text-white font-semibold">UESC</strong>.
+              Atuação dedicada a ajudar empresas e trabalhadores a entenderem e protegerem seus direitos, unindo a tradição de mais de 34 anos da banca <strong className="text-white font-semibold">FV Advogados Associados</strong> (fundada em 1990) à pós-graduação pela <strong className="text-white font-semibold">PUC/RS</strong> e formação pela <strong className="text-white font-semibold">UESC</strong>.
             </p>
 
             {/* Botões de Ação */}
@@ -71,18 +71,18 @@ export const HeroSection = ({ photos }) => {
               </div>
               <div className="text-center lg:text-left border-x border-rose-900/40 px-1 sm:px-3">
                 <span className="font-serif-editorial text-xl sm:text-2xl lg:text-3xl font-bold text-[#E8D5B0] block leading-none">
-                  PUC &amp; FGV
+                  Pós PUC/RS
                 </span>
                 <span className="text-[10px] sm:text-xs text-rose-200/80 font-medium tracking-wide mt-1 block truncate">
-                  Pós-Graduação
+                  Especialização
                 </span>
               </div>
               <div className="text-center lg:text-left">
                 <span className="font-serif-editorial text-xl sm:text-2xl lg:text-3xl font-bold text-[#E8D5B0] block leading-none">
-                  Desde 1990
+                  FV Advogados
                 </span>
                 <span className="text-[10px] sm:text-xs text-rose-200/80 font-medium tracking-wide mt-1 block">
-                  Banca FV Advogados
+                  Fundado em 1990
                 </span>
               </div>
             </div>

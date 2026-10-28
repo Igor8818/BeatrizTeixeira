@@ -64,7 +64,7 @@ export const ContactSection = () => {
                     WhatsApp &amp; Atendimento Rápido
                   </span>
                   <span className="text-base font-bold text-white">
-                    {PROFILE_INFO.officePhone}
+                    {PROFILE_INFO.phoneDirect}
                   </span>
                 </div>
               </a>

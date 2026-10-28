@@ -167,7 +167,7 @@ export const AreasSection = () => {
               </div>
               <div>
                 <span className="text-xs uppercase tracking-wider text-[#C8A261] font-bold">
-                  FV Advogados Associados (Desde 1990)
+                  FV Advogados Associados (Fundado em 1990)
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-serif-editorial font-bold text-[#210A11]">
                   {selectedArea.title}

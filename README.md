@@ -3,8 +3,9 @@
 Site institucional desenvolvido em **React + Vite + Tailwind CSS** para a advogada **Dra. Beatriz Teixeira Figueiredo** ([@beatrizfigueiredoadv](https://www.instagram.com/beatrizfigueiredoadv/)).
 
 ## Perfil Profissional
-- **Atuação:** Advogada integrante do escritório **FV Advogados Associados** ([@fvadvogadosassociados](https://www.instagram.com/fvadvogadosassociados/) — Desde 1990 em Itabuna - BA).
+- **Atuação:** Advogada integrante do escritório **FV Advogados Associados** ([@fvadvogadosassociados](https://www.instagram.com/fvadvogadosassociados/) — escritório fundado em 1990 em Itabuna - BA).
 - **Formação:** Graduada em Direito pela **UESC** (Universidade Estadual de Santa Cruz) e **Pós-graduanda pela PUC/RS**.
+- **Contato:** WhatsApp Direto **+55 (73) 99984-2205** | Escritório: **(73) 3211-3550**.
 - **Foco:** Assessoria jurídica estratégica para **empresas e trabalhadores**, Direito Cível, Direito das Famílias e Direitos da Mulher, Direito Agrário e Crédito Rural, e Direito Público.
 - **Currículo Lattes (CNPq):** [http://lattes.cnpq.br/1920374097568395](http://lattes.cnpq.br/1920374097568395)
 
@@ -27,8 +28,7 @@ Site institucional desenvolvido em **React + Vite + Tailwind CSS** para a advoga
 │   │   ├── ArticlesSection.jsx          # Produção científica e artigos
 │   │   ├── FaqSection.jsx               # Dúvidas frequentes (Accordion)
 │   │   ├── ContactSection.jsx           # Formulário de agendamento e contato direto
-│   │   ├── Footer.jsx                   # Rodapé institucional
-│   │   └── PhotoCustomizerModal.jsx     # Modal para testar fotos personalizadas no navegador
+│   │   └── Footer.jsx                   # Rodapé institucional
 │   ├── data/
 │   │   └── siteData.js                  # Dados estruturados da profissional e do escritório
 │   ├── App.jsx

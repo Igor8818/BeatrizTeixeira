@@ -56,7 +56,7 @@ export default function CtaBanner({ onScrollToContact }) {
           <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs sm:text-sm text-rose-100/90 pt-4 border-t border-white/15">
             <span className="inline-flex items-center gap-2">
               <Building2 className="w-4 h-4 text-rose-200" />
-              FV Advogados Associados (Desde 1990)
+              FV Advogados Associados (Fundado em 1990)
             </span>
             <span className="inline-flex items-center gap-2">
               <GraduationCap className="w-4 h-4 text-rose-200" />

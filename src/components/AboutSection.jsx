@@ -47,7 +47,7 @@ export const AboutSection = ({ photos }) => {
                   Advogada • FV Advogados Associados
                 </p>
                 <p className="text-[11px] text-[#C8A261] mt-0.5 font-semibold">
-                  UESC • Pós-graduanda PUC/RS • FGV
+                  UESC • Pós-graduanda PUC/RS
                 </p>
               </div>
             </div>
@@ -92,7 +92,7 @@ export const AboutSection = ({ photos }) => {
               <div className="w-16 h-1 bg-[#C8A261] rounded-full" />
 
               <p className="text-rose-100/90 text-sm sm:text-base leading-relaxed font-normal">
-                Advogada atuante no escritório <strong className="text-white font-semibold">FV Advogados Associados</strong> (fundado em 1990 em Itabuna - BA), graduada em Direito pela <strong className="text-white font-semibold">Universidade Estadual de Santa Cruz (UESC)</strong> e pós-graduanda pela <strong className="text-white font-semibold">PUC/RS</strong>, com capacitações executivas pela <strong className="text-white font-semibold">FGV</strong>.
+                Advogada integrante da tradicional banca <strong className="text-white font-semibold">FV Advogados Associados</strong> (escritório fundado em 1990 em Itabuna - BA), graduada em Direito pela <strong className="text-white font-semibold">Universidade Estadual de Santa Cruz (UESC)</strong> e pós-graduanda pela <strong className="text-white font-semibold">PUC/RS</strong>.
               </p>
               <p className="text-rose-100/90 text-sm sm:text-base leading-relaxed font-normal">
                 Com trajetória reconhecida em <strong className="text-[#E8D5B0] font-semibold">1º Lugar no 10º Simpósio de Extensão da UESC</strong>, sua atuação alia sólida prática em gabinete forense (Fazenda Pública e Família do TJ/BA) e Ministério Público (MP/BA) ao compromisso com a proteção de empresas e trabalhadores.
